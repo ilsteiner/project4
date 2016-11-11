@@ -14,8 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/path', function () {
-	$fileDir = "./../resources/";
-	return realpath($fileDir);
-});
