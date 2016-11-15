@@ -3,6 +3,7 @@
 namespace CharDB;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Character extends Model
 {
@@ -15,5 +16,9 @@ class Character extends Model
 		$name .= ($this->suffix == null ? '' : $this->suffix);
 
 		return $name;
+	}
+
+	public function getSexIconAttribute(){
+		return DB::table('sexes')->where('id', '=', $this->sex)->pluck('icon')[0];
 	}
 }

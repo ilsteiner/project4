@@ -15,7 +15,8 @@ class SexesTableSeeder extends Seeder
             DB::table('sexes')->insert([
                 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-                'sex' => 'male'
+                'sex' => 'male',
+                'icon' => 'f222'
             ]);
         }
         
@@ -23,7 +24,8 @@ class SexesTableSeeder extends Seeder
             DB::table('sexes')->insert([
             		'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             		'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            		'sex' => 'female'
+            		'sex' => 'female',
+                    'icon' => 'f221'
             ]);
         }
 
@@ -31,7 +33,8 @@ class SexesTableSeeder extends Seeder
             DB::table('sexes')->insert([
             		'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             		'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            		'sex' => 'any'
+            		'sex' => 'any',
+                    'icon' => 'f22c'
             ]);
         }
 
@@ -39,7 +42,8 @@ class SexesTableSeeder extends Seeder
             DB::table('sexes')->insert([
             		'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             		'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            		'sex' => 'other'
+            		'sex' => 'other',
+                    'icon' => 'f22c'
             ]);
         }
 
@@ -47,7 +51,8 @@ class SexesTableSeeder extends Seeder
             DB::table('sexes')->insert([
             		'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             		'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            		'sex' => 'N/A'
+            		'sex' => 'N/A',
+                    'icon' => 'f22d'
             ]);
         }
     }
