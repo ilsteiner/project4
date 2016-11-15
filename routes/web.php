@@ -15,14 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'IndexController')->name('app.index');
-
-Route::get('/lorem/', 'LoremController@create')->name('lorem.create');
-
-Route::post('/lorem/', 'LoremController@store')->name('lorem.store');
-
-
-
 Route::get('/characters', 'CharacterController@index')->name('characters.index');
 Route::get('/characters/show/{name}', 'CharacterController@show')->name('characters.show');
 Route::get('/characters/create', 'CharacterController@create')->name('characters.create');
