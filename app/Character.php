@@ -21,4 +21,8 @@ class Character extends Model
 	public function getSexIconAttribute(){
 		return DB::table('sexes')->where('id', '=', $this->sex)->pluck('icon')[0];
 	}
+
+	public function getRelationshipCountAttribute(){
+		return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->count();
+	}
 }
