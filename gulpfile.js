@@ -14,6 +14,9 @@ const elixir = require('laravel-elixir');
  */
 
 elixir((mix) => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix.sass(
+    ['CharDB.scss','sidebar.scss'],
+    'public\\css\\CharDB.css'
+    )
+       .webpack('CharDB.js');
 });
