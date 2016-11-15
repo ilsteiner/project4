@@ -177,6 +177,7 @@ return [
         // CharDB\Providers\BroadcastServiceProvider::class,
         CharDB\Providers\EventServiceProvider::class,
         CharDB\Providers\RouteServiceProvider::class,
+        CharDB\Providers\ViewComposerServiceProvider::class,
 
     ],
 

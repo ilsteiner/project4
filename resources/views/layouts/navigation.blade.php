@@ -16,7 +16,6 @@
 						 <span class="fa fa-sitemap relationship" aria-hidden="true"></span>
 					@endif
 				</a>
-				
 			</li>
 		@endforeach
 	</ul>

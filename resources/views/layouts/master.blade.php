@@ -11,6 +11,10 @@
 <body>
 	<div id="wrapper">
 		@include('layouts.navigation')
+		
+		<div id="page-content-wrapper">
+			@yield('content')
+		</div>
 	</div>
 </body>
 </html>

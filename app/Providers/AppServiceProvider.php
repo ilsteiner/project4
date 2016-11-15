@@ -3,6 +3,7 @@
 namespace CharDB\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use CharDB\Character;
 
 class AppServiceProvider extends ServiceProvider
 {
