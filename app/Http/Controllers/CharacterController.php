@@ -14,7 +14,8 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        return view('characters.index',array('characters' => Character::all()));
+        $characters = Character::orderBy('last_name')->orderBy('first_name')->get();
+        return view('characters.index',array('characters' => $characters));
     }
 
     /**
