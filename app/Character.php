@@ -22,6 +22,10 @@ class Character extends Model
 		return DB::table('sexes')->where('id', '=', $this->sex)->pluck('icon')[0];
 	}
 
+	public function getSexNameAttribute(){
+		return ucfirst(DB::table('sexes')->where('id', '=', $this->sex)->pluck('sex')[0]);
+	}
+
 	public function getRelationshipCountAttribute(){
 		return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->count();
 	}
