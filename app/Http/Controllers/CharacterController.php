@@ -3,6 +3,7 @@
 namespace CharDB\Http\Controllers;
 
 use Illuminate\Http\Request;
+use CharDB\Character;
 
 class CharacterController extends Controller
 {
@@ -13,7 +14,7 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        return 'characters';
+        return view('characters.index',array('characters' => Character::all()));
     }
 
     /**

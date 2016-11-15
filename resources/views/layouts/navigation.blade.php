@@ -4,8 +4,8 @@
 	<ul class="sidebar-nav">
 		@foreach($characters as $character)
 			<li>
-				<a href={{ route('characters.show', ['id' => $character.id]) }}>
-					{{ $character.displayName() }}
+				<a href={{ route('characters.show', ['id' => $character->id]) }}>
+					{{ $character->full_name }}
 				</a>
 			</li>
 		@endforeach
