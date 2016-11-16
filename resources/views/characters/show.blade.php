@@ -15,6 +15,9 @@
 	</div>
 </div>
 @endif
+@if(isset($character_updating))
+
+@endif
 
 <div class="row">
 	<div class="col-xs-1 show-name">

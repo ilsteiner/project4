@@ -2,8 +2,11 @@
 {{-- Adapted from https://github.com/BlackrockDigital/startbootstrap-simple-sidebar --}}
 <div id="sidebar-wrapper">
 	<ul class="sidebar-nav">
-		<li class="sidebar-brand>
-			<a href="{{ route('characters.index') }}">CharDB</a>
+		<li class="sidebar-brand">
+			<a class="brand" href="{{ route('characters.index') }}">CharDB</a>
+			<a class="brand" href="{{ route('characters.create') }}">
+				<i class="fa fa-user-plus" aria-hidden="true"></i>
+			</a>
 		</li>
 		@foreach($characters as $character)
 			<li>

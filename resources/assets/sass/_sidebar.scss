@@ -132,3 +132,11 @@
 .sidebar-nav li.active {
     background-color: $side-active-color;
 }
+
+.sidebar-nav li a.brand {
+    display: inline;
+}
+
+.sidebar-nav li a.add-user:hover {
+    background: none;
+}
