@@ -21,6 +21,7 @@ Route::get('/characters/create', 'CharacterController@create')->name('characters
 Route::post('/characters/create', 'CharacterController@store')->name('characters.store');
 Route::get('/characters/edit/{id}', 'CharacterController@edit')->name('characters.edit');
 Route::get('/characters/edit/{id}', 'CharacterController@update')->name('characters.update');
+Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('characters.delete');
 
 Route::get('/relationships', 'CharacterController@index')->name('relationships.index');
 Route::get('/relationships/show/{id}', 'CharacterController@show')->name('relationships.show');

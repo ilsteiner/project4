@@ -6,7 +6,7 @@
 
 @section('content')
 {{-- If we just created a new character and are displaying it --}}
-@if($character_created)
+@if(isset($character_created))
 <div class="row">
 	<div class="col-xs-12">
 		<div class="alert alert-success" role="alert">
@@ -51,17 +51,14 @@
 
 @if($character->long_description != null)
 <div class="row">
-	<div class="col-xs-12 show-long-description">
+	<div class="col-xs-8 show-long-description">
 		<div class="well well-lg">
 			{{ $character->long_description }}
 		</div>
 	</div>
-</div>
-@endif
 
-@if($character->relationship_count > 0)
-	<div class="row">
-		<div class="col-xs-6 relationships-with-others">
+	@if($character->relationship_count > 0)
+		<div class="col-xs-2 relationships-with-others show-relationships">
 			<div class="relationship-section-title">
 				{{ $character->first_name }} and others
 			</div>
@@ -79,7 +76,7 @@
 			</ul>
 		</div>
 
-		<div class="col-xs-6 relationships-with-self">
+		<div class="col-xs-2 relationships-with-self show-relationships">
 			<div class="relationship-section-title">
 				Others and {{ $character->first_name }}
 			</div>
@@ -103,7 +100,27 @@
 				@endforeach
 			</ul>
 		</div>
-	</div>
+	@endif
+</div>
 @endif
+
+<div class="row">
+	<div class="col-md-4">
+		<a href="/characters/edit/{{ $character->id }}">
+			<button class="btn btn-info btn-block form-btn">
+				<i class="fa fa-trash" aria-hidden="true"></i>
+				Edit
+			</button>
+		</a>
+	</div>
+	<div class="col-md-4">
+		<a href="/characters/delete/{{ $character->id }}">
+			<button class="btn btn-danger btn-block form-btn">
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+				Delete
+			</button>
+		</a>
+	</div>
+</div>
 
 @stop

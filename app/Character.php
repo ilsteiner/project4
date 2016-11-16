@@ -31,7 +31,7 @@ class Character extends Model
 	}
 
 	public function getRelationshipsAttribute(){
-		return \CharDB\Relationship::where('character', $this->id)->get();
+		return \CharDB\Relationship::where('character', $this->id)->get();	
 	}
 
 	public function getRelationshipsWithAttribute(){
