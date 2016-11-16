@@ -14,4 +14,13 @@
 @import "sidebar";
 
 //Individual pages
-@import "character.show"
+@import "character.show";
+@import "character.create";
+
+// Global styles
+label.required:after{
+	content: "required";
+	font-size: .6em;
+	padding-left: 5px;
+	color: DarkRed;
+}

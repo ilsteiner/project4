@@ -5,6 +5,17 @@
 @stop
 
 @section('content')
+{{-- If we just created a new character and are displaying it --}}
+@if($character_created)
+<div class="row">
+	<div class="col-xs-12">
+		<div class="alert alert-success" role="alert">
+			Created {{ $character->full_name }}!
+		</div>
+	</div>
+</div>
+@endif
+
 <div class="row">
 	<div class="col-xs-1 show-name">
 		{{-- Displays icon based on sex of character, looking up unicode for font-awesome --}}
