@@ -101,18 +101,19 @@ class CharactersTableSeeder extends Seeder
     }
 
     //This uses the same lorem ipsum generator I used in project 3
+    //I tried to pull this out so it wasn't repeated in both seeders, but couldn't find a good way
     private static function getDescription($length='short') {
-    	switch ($length) {
-    		case 'short':
-    			$descriptors = file(resource_path() . "/descriptors.txt");
-    			$descriptor = $descriptors[array_rand($descriptors)];
-    			$description = "This person is " . (mt_rand(0,1) ? 'very ' : '') . $descriptor;
-    			return str_replace(array("\n\r", "\n", "\r"), "", $description);
-    		case 'long':
-    			$loremGen = new \Badcow\LoremIpsum\Generator();
-    			return $loremGen->getParagraphs(1)[0];
-    		default:
-    			return '';
-    	}
+        switch ($length) {
+            case 'short':
+                $descriptors = file(resource_path() . "/descriptors.txt");
+                $descriptor = $descriptors[array_rand($descriptors)];
+                $description = "This person is " . (mt_rand(0,1) ? 'very ' : '') . $descriptor;
+                return str_replace(array("\n\r", "\n", "\r"), "", $description);
+            case 'long':
+                $loremGen = new \Badcow\LoremIpsum\Generator();
+                return $loremGen->getParagraphs(1)[0];
+            default:
+                return '';
+        }
     }
 }

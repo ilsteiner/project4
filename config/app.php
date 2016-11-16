@@ -177,6 +177,7 @@ return [
         // CharDB\Providers\BroadcastServiceProvider::class,
         CharDB\Providers\EventServiceProvider::class,
         CharDB\Providers\RouteServiceProvider::class,
+        CharDB\Providers\ViewComposerServiceProvider::class,
 
     ],
 
@@ -225,7 +226,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
     ],
 
 ];

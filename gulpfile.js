@@ -14,6 +14,12 @@ const elixir = require('laravel-elixir');
  */
 
 elixir((mix) => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix
+    	.sass(
+		    ['CharDB.scss'],
+		    'public/css/CharDB.css'
+		    )
+       .webpack('CharDB.js')
+       .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/fonts/bootstrap/')
+       .copy('node_modules/font-awesome/fonts/','public/fonts/font-awesome');
 });

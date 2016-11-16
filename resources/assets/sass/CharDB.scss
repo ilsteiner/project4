@@ -1,0 +1,26 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Font Awesome
+@import "font-awesome/font-awesome.scss";
+
+//Sidebar
+@import "sidebar";
+
+//Individual pages
+@import "character.show";
+@import "character.create";
+
+// Global styles
+label.required:after{
+	content: "required";
+	font-size: .6em;
+	padding-left: 5px;
+	color: DarkRed;
+}
