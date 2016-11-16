@@ -55,10 +55,11 @@
 				{{ $character->first_name }} and others
 			</div>
 
-			<ul>
+			<ul id='relationships'>
 				@foreach($character->relationships as $relationship)
 					<li class="relationship">
 						{{ $character->first_name . ' ' . $relationship->name }}
+						
 						<a href="{{ route('characters.show', ['id' => $relationship->is_related_to]) }}">
 							{{ $relationship->related_to_name }}
 						</a>
@@ -71,14 +72,22 @@
 			<div class="relationship-section-title">
 				Others and {{ $character->first_name }}
 			</div>
-			
-			<ul>
+
+			<ul id='relationships-with'>
 				@foreach($character->relationships_with as $relationship)
 					<li class="relationship">
 						<a href="{{ route('characters.show', ['id' => $relationship->character]) }}">
 							{{ $relationship->character_name }}
-						</a> 
+						</a>
+
 						{{ $relationship->name . ' ' . $character->first_name }}
+
+						@if($relationship->description != null)
+							<a href="{{ route('relationships.show', ['id' => $relationship->id]) }}"
+							   title="Read more">
+									<i class="fa fa-2x fa-info-circle" aria-hidden="true"></i>
+							</a>
+						@endif
 					</li>
 				@endforeach
 			</ul>

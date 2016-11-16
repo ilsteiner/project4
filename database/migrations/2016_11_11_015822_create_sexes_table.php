@@ -18,7 +18,7 @@ class CreateSexesTable extends Migration
             $table->timestamps();
 
             $table->string('sex',config('field_lengths.sex'));
-            $table->string('icon',4);
+            $table->string('icon', 4);
         });
     }
 
