@@ -14,7 +14,7 @@
 				title="{{ $character->short_description }}"
 				>
 
-					{{-- Displays icon based on sex of character --}}
+					{{-- Displays icon based on sex of character, looking up unicode for font-awesome --}}
 					<span class="fa" aria-hidden="true">{{ '&#x' . $character->sex_icon . ';'}}</span>
 
 					{{-- Character name --}}
