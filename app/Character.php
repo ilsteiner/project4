@@ -29,4 +29,12 @@ class Character extends Model
 	public function getRelationshipCountAttribute(){
 		return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->count();
 	}
+
+	public function getRelationshipsAttribute(){
+		return \CharDB\Relationship::where('character', $this->id)->get();
+	}
+
+	public function getRelationshipsWithAttribute(){
+		return \CharDB\Relationship::where('is_related_to', $this->id)->get();
+	}
 }
