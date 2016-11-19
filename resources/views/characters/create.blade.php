@@ -104,8 +104,83 @@ Create Character
 				</div>
 			</div>
 		</fieldset>
-
-		<button class="btn btn-primary btn-block" type="submit">Create Character</button>
 	</form>
+
+	<form action="/relationships/create" method="POST">
+		{{ csrf_field() }}
+		<fieldset>
+			<legend>Relationships <button type="button" class="btn btn-sm btn-primary" id="btnAdd">Add</button></legend>
+				<div id="relationship1" class="clonedInput">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group" {{ ($errors->has('rel_name') ? ' has-error' : '' ) }}>
+								<label 
+									for="rel_name_1" 
+									id="rel_name_lbl_1" 
+									class="rel_name_lbl">
+									Relationship Name
+								</label>
+								<input 
+									type="text" 
+									name="rel_name_1" 
+									id="rel_name_1"
+									placeholder="is friends with" 
+									class="form-control rel_name"
+								>
+								@if($errors->has('rel_name_1'))
+									<span class="help-block">{{ $errors->first('rel_name') }}</span>
+								@endif
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group" {{ ($errors->has('rel_is_related_to') ? ' has-error' : '' ) }}>
+								<label 
+									for="rel_is_related_to_1" 
+									id="rel_is_related_to_lbl_1" 
+									class="rel_is_related_to_lbl">
+									Is Related To
+								</label>
+								<select  
+									class="form-control" 
+									id="rel_is_related_to_1" 
+									name="rel_is_related_to_1" 
+									class="form-control rel_is_related_to"
+								>
+									<option class="character_related" value="" disabled selected>Ford Prefect</option>
+								    @foreach($characters as $character)
+								      <option class="character_related" value="{{$character->id}}">{{$character->full_name}}</option>
+								    @endforeach
+							    </select>
+								@if($errors->has('rel_is_related_to_1'))
+									<span class="help-block">{{ $errors->first('rel_name') }}</span>
+								@endif
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group{{ ($errors->has('rel_description') ? ' has-error' : '' ) }}">
+								<label 
+									for="rel_description_1" 
+									id="rel_description_lbl_1" 
+									class="rel_description_lbl">
+									Relationship Description
+								</label>
+								<textarea 
+									id="rel_description_1" 
+									name="rel_description_1" 
+									placeholder="When Arthur and Ford met, Ford was posing as an out-of-work actor. He only revealed he was from a small planet somewhere in the vicinity of Betelgeuse, and not from Guildford after all, as he had usually claimed, to Arthur just before the Vogons arrived to destroy Earth."
+									class="form-control rel_description">
+								</textarea>
+								@if($errors->has('long_description'))
+									<span class="help-block">{{ $errors->first('rel_description_1') }}</span>
+								@endif
+							</div>
+						</div>
+					</div>
+				</div>
+		</fieldset>
+	</form>
+	<button class="btn btn-primary btn-block" onclick="createCharacter()">Create Character</button>
 </div>
 @stop

@@ -18,6 +18,16 @@ class ViewComposerServiceProvider extends ServiceProvider
             $characters = Character::orderBy('last_name')->orderBy('first_name')->get();
             $view->with('characters', $characters);
         });
+
+        view()->composer('characters.create', function($view){
+            $characters = Character::orderBy('last_name')->orderBy('first_name')->get();
+            $view->with('characters', $characters);
+        });
+
+        view()->composer('characters.create', function($view){
+            $characters = Character::orderBy('last_name')->orderBy('first_name')->get();
+            $view->with('characters', $characters);
+        });
     }
 
     /**

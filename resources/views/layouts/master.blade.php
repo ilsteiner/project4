@@ -18,5 +18,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="/js/CharDB.js" type="text/javascript" charset="utf-8"></script>
+	@yield('body')
 </body>
 </html>
