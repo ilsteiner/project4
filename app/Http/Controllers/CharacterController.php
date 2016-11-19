@@ -103,6 +103,18 @@ class CharacterController extends Controller
     }
 
     /**
+     * Confirm deletion of the character
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id) {
+        $character = Character::find($id);
+
+        return view('character.delete')->with('character',$character);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -110,6 +122,39 @@ class CharacterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $character = Character::find($id);
+
+        if(is_null($character)) {
+            Session::flash('error','Character ' . $id . ' not found');
+            return redirect('/characters');
+        }
+
+        // Get the number of relationships
+        // this character is in
+        $relationshipCount = $character->relationship_count();
+
+        /**
+         * Delete the character
+         * This will also delete any
+         * associated relationships
+         * since they are set to
+         * cascade on delete and it's
+         * a one-to-one relationship
+         */
+        $character->delete();
+
+        Session::flash('success', $character->full_name() .       
+            ($relationshipCount ?
+            // There are relationships
+                ($relationshipCount == 1 
+                    // There's only one relationship
+                    ? 'one relationship'
+                    // There's more than one relationship
+                    : $relationshipCount . ' relationships.') 
+            // There are no relationships
+            : ' was deleted.'
+            ));
+
+        return redirect('/characters');
     }
 }
