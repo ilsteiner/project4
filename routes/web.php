@@ -15,13 +15,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Show all characters
 Route::get('/characters', 'CharacterController@index')->name('characters.index');
+
+// Show individual character
 Route::get('/characters/show/{id}', 'CharacterController@show')->name('characters.show');
+
+// Show form to create a character
 Route::get('/characters/create', 'CharacterController@create')->name('characters.create');
-Route::post('/characters/create', 'CharacterController@store')->name('characters.store');
+
+// Process form to create a character
+Route::put('/characters/create', 'CharacterController@store')->name('characters.store');
+
+// Show form to edit a character
 Route::get('/characters/edit/{id}', 'CharacterController@edit')->name('characters.edit');
-Route::get('/characters/edit/{id}', 'CharacterController@update')->name('characters.update');
+
+// Process form to edit a character
+Route::put('/characters/edit/{id}', 'CharacterController@update')->name('characters.update');
+
+// Get route to confirm deletion of character
 Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('characters.delete');
+
+// Actually delete the character
+Route::delete('/characters/{id}', 'CharacterController@destroy')->name('characters.destroy');
 
 Route::get('/relationships', 'CharacterController@index')->name('relationships.index');
 Route::get('/relationships/show/{id}', 'CharacterController@show')->name('relationships.show');
