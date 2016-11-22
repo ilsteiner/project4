@@ -25,7 +25,7 @@ Route::get('/characters/show/{id}', 'CharacterController@show')->name('character
 Route::get('/characters/create', 'CharacterController@create')->name('characters.create');
 
 // Process form to create a character
-Route::put('/characters/create', 'CharacterController@store')->name('characters.store');
+Route::post('/characters/create', 'CharacterController@store')->name('characters.store');
 
 // Show form to edit a character
 Route::get('/characters/edit/{id}', 'CharacterController@edit')->name('characters.edit');

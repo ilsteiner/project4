@@ -21,3 +21,5 @@ const app = new Vue({
 */
 
 require('./vendor/clone-form-td');
+
+require('./form.js');

@@ -14,6 +14,17 @@
 
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
+				{{-- If there is an error message to display --}}
+				@if(isset($flash_error))
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="alert alert-danger" role="alert">
+							{{ $flash_error }}
+						</div>
+					</div>
+				</div>
+				@endif
+
 				@yield('content')
 			</div>
 		</div>

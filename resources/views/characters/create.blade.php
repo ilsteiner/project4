@@ -6,7 +6,7 @@ Create Character
 
 @section('content')
 <div class="row">
-	<form action="/characters/create" method="POST">
+	<form action="/characters/create" method="POST" id="character-form">
 		{{ csrf_field() }}
 		<fieldset>
 			<legend>Character Name</legend>
@@ -106,7 +106,7 @@ Create Character
 		</fieldset>
 	</form>
 
-	<form action="/relationships/create" method="POST">
+	<form action="/relationships/create" method="POST" id="relationship-form">
 		{{ csrf_field() }}
 		<fieldset>
 			<legend>Relationships 
