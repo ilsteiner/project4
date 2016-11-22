@@ -109,7 +109,14 @@ Create Character
 	<form action="/relationships/create" method="POST">
 		{{ csrf_field() }}
 		<fieldset>
-			<legend>Relationships <button type="button" class="btn btn-sm btn-primary" id="btnAdd">Add</button></legend>
+			<legend>Relationships 
+				<button type="button" class="btn btn-sm btn-success" id="btnAdd">
+					<i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+				</button>
+				<button type="button" class="btn btn-sm btn-danger" id="btnDel">
+					<i class="fa fa-2x fa-minus" aria-hidden="true"></i>
+				</button>
+			</legend>
 				<div id="relationship1" class="clonedInput">
 					<div class="row">
 						<div class="col-md-6">
