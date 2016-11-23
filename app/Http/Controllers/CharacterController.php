@@ -49,8 +49,13 @@ class CharacterController extends Controller
             'sex' => "required|in:" . $sexes,
             'short_description' => "required|max:" . config('field_lengths.short_description'),
             'long_description' => "max:" . config('field_lengths.long_description'),
+            'rel.*.name' => 'required_with:rel.*.is_related_to,rel.*.description',
+            'rel.*.is_related_to' => 'required_with:rel.*.name,rel.*.description',
+            'rel.*.description' => 'max:1024'
             ]
             );
+
+            dd($request);
 
         $character = new Character;
 

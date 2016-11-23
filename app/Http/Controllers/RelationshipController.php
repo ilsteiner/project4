@@ -34,7 +34,20 @@ class RelationshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Get all valid character ids as a comma-separted list
+        $characters = implode(",",DB::table('characters')->pluck('id')->toArray());
+
+        $relationships = [];
+
+        foreach ($request as $input => $value) {
+            
+        }
+
+        $validator = Validator::make($request->all(), [
+                     'rel_name_*' => 'required|max:255',
+                     'rel_is_related_to_*' => 'required',
+                     'rel_description_*' => 'max:1024'
+                     ]);
     }
 
     /**

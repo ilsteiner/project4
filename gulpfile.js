@@ -20,6 +20,7 @@ elixir((mix) => {
 		    'public/css/CharDB.css'
 		    )
        .webpack('CharDB.js')
+       .scripts(['vendor/clone-form-td.js'],'public/js/form.js')
        .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/fonts/bootstrap/')
        .copy('node_modules/font-awesome/fonts/','public/fonts/font-awesome');
 });

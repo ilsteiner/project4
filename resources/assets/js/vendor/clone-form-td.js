@@ -44,24 +44,24 @@ $(function () {
         //newElem.find('.heading-reference').attr('id', 'ID' + newNum + '_reference').attr('name', 'ID' + newNum + '_reference').html('Entry #' + newNum);
 
         // Name - text
-        newElem.find('.rel_name_lbl').attr('for', 'rel_name_lbl_' + newNum);
-        newElem.find('.rel_name').attr('id', 'rel_name_' + newNum).attr('name', 'rel_name_' + newNum).val('');
+        newElem.find('.rel_name_lbl').attr('for', 'rel_name_' + newNum);
+        newElem.find('.rel_name').attr('id', 'rel_name_' + newNum).val('');
 
         // Related to - select
-        newElem.find('.rel_is_related_to_lbl').attr('for', 'rel_is_related_to_lbl_' + newNum);
-        newElem.find('.rel_is_related_to').attr('id', 'rel_is_related_to_' + newNum).attr('name', 'rel_is_related_to_' + newNum).val('');
+        newElem.find('.rel_is_related_to_lbl').attr('for', 'rel_is_related_to_' + newNum);
+        newElem.find('.rel_is_related_to').attr('id', 'rel_is_related_to_' + newNum).val('');
 
         // Description - text area
-        newElem.find('.rel_description_lbl').attr('for', 'rel_description_lbl_' + newNum);
-        newElem.find('.rel_description').attr('id', 'rel_description_' + newNum).attr('name', 'rel_description_' + newNum).val('');
+        newElem.find('.rel_description_lbl').attr('for', 'rel_description_' + newNum);
+        newElem.find('.rel_description').attr('id', 'rel_description_' + newNum).val('');
 
         // Skate - radio
         // newElem.find('.label_radio').attr('for', 'ID' + newNum + '_radioitem');
         // newElem.find('.input_radio').attr('id', 'ID' + newNum + '_radioitem').attr('name', 'ID' + newNum + '_radioitem').val([]);
 
         // Email - text
-        newElem.find('.label_email').attr('for', 'ID' + newNum + '_email_address');
-        newElem.find('.input_email').attr('id', 'ID' + newNum + '_email_address').attr('name', 'ID' + newNum + '_email_address').val('');
+        //newElem.find('.label_email').attr('for', 'ID' + newNum + '_email_address');
+        //newElem.find('.input_email').attr('id', 'ID' + newNum + '_email_address').attr('name', 'ID' + newNum + '_email_address').val('');
 
     // Insert the new element after the last "duplicatable" input field
         $('#relationship' + num).after(newElem);

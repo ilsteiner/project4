@@ -104,10 +104,7 @@ Create Character
 				</div>
 			</div>
 		</fieldset>
-	</form>
-
-	<form action="/relationships/create" method="POST" id="relationship-form">
-		{{ csrf_field() }}
+	
 		<fieldset>
 			<legend>Relationships 
 				<button type="button" class="btn btn-sm btn-success" id="btnAdd">
@@ -120,7 +117,7 @@ Create Character
 				<div id="relationship1" class="clonedInput">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="form-group" {{ ($errors->has('rel_name') ? ' has-error' : '' ) }}>
+							<div class="form-group {{ ($errors->has('rel.1.name') ? ' has-error' : '' ) }}">
 								<label 
 									for="rel_name_1" 
 									id="rel_name_lbl_1" 
@@ -129,18 +126,18 @@ Create Character
 								</label>
 								<input 
 									type="text" 
-									name="rel_name_1" 
+									name="rel[][name]" 
 									id="rel_name_1"
 									placeholder="is friends with" 
 									class="form-control rel_name"
 								>
-								@if($errors->has('rel_name_1'))
-									<span class="help-block">{{ $errors->first('rel_name') }}</span>
+								@if($errors->has('rel.1.name'))
+									<span class="help-block">{{ $errors->first('rel.1.name') }}</span>
 								@endif
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group" {{ ($errors->has('rel_is_related_to') ? ' has-error' : '' ) }}>
+							<div class="form-group {{ ($errors->has('rel.1.is_related_to') ? ' has-error' : '' ) }}">
 								<label 
 									for="rel_is_related_to_1" 
 									id="rel_is_related_to_lbl_1" 
@@ -150,7 +147,7 @@ Create Character
 								<select  
 									class="form-control" 
 									id="rel_is_related_to_1" 
-									name="rel_is_related_to_1" 
+									name="rel[][is_related_to]" 
 									class="form-control rel_is_related_to"
 								>
 									<option class="character_related" value="" disabled selected>Ford Prefect</option>
@@ -158,15 +155,15 @@ Create Character
 								      <option class="character_related" value="{{$character->id}}">{{$character->full_name}}</option>
 								    @endforeach
 							    </select>
-								@if($errors->has('rel_is_related_to_1'))
-									<span class="help-block">{{ $errors->first('rel_name') }}</span>
+								@if($errors->has('rel.1.is_related_to'))
+									<span class="help-block">{{ $errors->first('rel.1.is_related_to') }}</span>
 								@endif
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="form-group{{ ($errors->has('rel_description') ? ' has-error' : '' ) }}">
+							<div class="form-group{{ ($errors->has('rel.1.description') ? ' has-error' : '' ) }}">
 								<label 
 									for="rel_description_1" 
 									id="rel_description_lbl_1" 
@@ -175,19 +172,23 @@ Create Character
 								</label>
 								<textarea 
 									id="rel_description_1" 
-									name="rel_description_1" 
+									name="rel[][description]" 
 									placeholder="When Arthur and Ford met, Ford was posing as an out-of-work actor. He only revealed he was from a small planet somewhere in the vicinity of Betelgeuse, and not from Guildford after all, as he had usually claimed, to Arthur just before the Vogons arrived to destroy Earth."
 									class="form-control rel_description">
 								</textarea>
-								@if($errors->has('long_description'))
-									<span class="help-block">{{ $errors->first('rel_description_1') }}</span>
+								@if($errors->has('rel.1.long_description'))
+									<span class="help-block">{{ $errors->first('rel.1.description') }}</span>
 								@endif
 							</div>
 						</div>
 					</div>
 				</div>
 		</fieldset>
+		<button class="btn btn-primary btn-block" type="submit">Create Character</button>
 	</form>
-	<button class="btn btn-primary btn-block" onclick="createCharacter()">Create Character</button>
 </div>
+@stop
+
+@section('body')
+<script src="/js/form.js" type="text/javascript" charset="utf-8"></script>
 @stop
