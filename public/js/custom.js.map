@@ -1,0 +1,1 @@
+{"version":3,"sources":["custom.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"custom.js","sourcesContent":["jQuery(document).ready(function () {\r\n  jQuery('[data-toggle=\"tooltip\"]').tooltip();\r\n  console.log(\"Registered tooltip\");\r\n});\r\n"]}
