@@ -140,3 +140,29 @@
 .sidebar-nav li a.add-user:hover {
     background: none;
 }
+
+.rel-plus {
+    margin-left: -2.5em;
+    margin-top: .15em;
+    font-size: .65em;
+    text-shadow:
+        -1px -1px 0 $font-awesome-dark-color,
+        1px -1px 0 $font-awesome-dark-color,
+        -1px 1px 0 $font-awesome-dark-color,
+        1px 1px 0 $font-awesome-dark-color
+}
+
+.tooltip.bottom, .tooltip.right {
+    .tooltip-inner {
+        background-color: $text-color;
+        color: black;
+    }
+}
+
+.light-tooltip-bottom + .tooltip > .tooltip-arrow {
+    border-bottom-color: $text-color;
+}
+
+.light-tooltip-right + .tooltip > .tooltip-arrow {
+    border-right-color: $text-color;
+}
