@@ -10,7 +10,10 @@ Create Relationship
 		{{ method_field('PUT') }}
 		@include('relationships.form');
 
-		<button class="btn btn-primary btn-block" type="submit">Create Relationship</button>
+		<button 
+			id="rel-btn" 
+			class="btn btn-primary btn-block" 
+			type="submit">Create Relationship</button>
 	</form>
 </div>
 @stop

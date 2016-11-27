@@ -8436,6 +8436,15 @@ li.relationship {
 #sex {
   text-transform: capitalize; }
 
+.rel-text {
+  font-size: 3em; }
+
+#bidirectional {
+  display: none; }
+
+/* .bootstrap-switch-container span {
+	font-size: 3vw !important;
+} */
 label.required:after {
   content: "required";
   font-size: .6em;
