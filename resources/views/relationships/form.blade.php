@@ -78,6 +78,8 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<input type="checkbox" name="test">
+		<div class="form-group">
+			<input class="form-control" type="checkbox" name="test">
+		</div>
 	</div>
 </div>

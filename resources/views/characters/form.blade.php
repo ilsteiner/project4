@@ -99,11 +99,13 @@
 		<div class="col-md-12">
 			<div class="form-group{{ ($errors->has('long_description') ? ' has-error' : '' ) }}">
 				<label for="long_description">Full Description</label>
-				<textarea id="long_description" name="long_description" 
-				placeholder="Arthur Dent is about thirty years old, tall, dark-haired and never quite at ease with himself. Since he moved to London he made him nervous and irritable. The thing that he worried about, which worries him most is the fact, that people often used to ask him, why he always looks that worried."
-				class="form-control">
-					{{ (isset($character->long_description) ? $character->long_description : "") }}
-				</textarea>
+				<textarea 
+					id="long_description" 
+					name="long_description" 
+					placeholder="Arthur Dent is about thirty years old, tall, dark-haired and never quite at ease with himself. Since he moved to London he made him nervous and irritable. The thing that he worried about, which worries him most is the fact, that people often used to ask him, why he always looks that worried."
+					class="form-control"
+					rows="5"
+				>{{ (isset($character->long_description) ? $character->long_description : "") }}</textarea>
 				@if($errors->has('long_description'))
 					<span class="help-block">{{ $errors->first('long_description') }}</span>
 				@endif
