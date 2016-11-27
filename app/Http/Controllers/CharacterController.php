@@ -87,7 +87,9 @@ class CharacterController extends Controller
      */
     public function edit($id)
     {
-        
+        return view('characters.create', 
+            ['sexes' => DB::table('sexes')->get(), 
+            'character' => Character::find($id)]);
     }
 
     /**
