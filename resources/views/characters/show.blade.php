@@ -15,8 +15,16 @@
 	</div>
 </div>
 @endif
-@if(isset($character_updating))
 
+{{-- If we just edited this character are displaying it --}}
+@if(isset($character_updated))
+<div class="row">
+	<div class="col-xs-12">
+		<div class="alert alert-success" role="alert">
+			{{ $character->full_name }} has been updated!
+		</div>
+	</div>
+</div>
 @endif
 
 <div class="row">

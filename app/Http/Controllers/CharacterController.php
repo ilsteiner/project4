@@ -87,7 +87,7 @@ class CharacterController extends Controller
      */
     public function edit($id)
     {
-        return view('characters.create', 
+        return view('characters.edit', 
             ['sexes' => DB::table('sexes')->get(), 
             'character' => Character::find($id)]);
     }
@@ -101,7 +101,36 @@ class CharacterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Get all valid sexes as a comma-separted list
+        $sexes = implode(",",DB::table('sexes')->pluck('id')->toArray());
+
+        $this->validate($request,
+            [
+            'prefix' => "max:" . config('field_lengths.prefix'),
+            'first_name' => "required|max:" . config('field_lengths.first_name'),
+            'middle_name' => "max:" . config('field_lengths.middle_name'),
+            'last_name' => "required|max:" . config('field_lengths.last_name'),
+            'suffix' => "max:" . config('field_lengths.suffix'),
+            'sex' => "required|in:" . $sexes,
+            'short_description' => "required|max:" . config('field_lengths.short_description'),
+            'long_description' => "max:" . config('field_lengths.long_description'),
+            ]
+            );
+
+        $character = Character::find($id);
+
+        $character->prefix = $request->prefix;
+        $character->first_name = $request->first_name;
+        $character->middle_name = $request->middle_name;
+        $character->last_name = $request->last_name;
+        $character->suffix = $request->suffix;
+        $character->sex = $request->sex;
+        $character->short_description = $request->short_description;
+        $character->long_description = $request->long_description;
+
+        $character->save();
+
+        return view('characters.show', ['character' => $character, 'character_updated' => true]);
     }
 
     /**
