@@ -39,9 +39,11 @@ Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('chara
 // Actually delete the character
 Route::delete('/characters/{id}', 'CharacterController@destroy')->name('characters.destroy');
 
-Route::get('/relationships', 'CharacterController@index')->name('relationships.index');
-Route::get('/relationships/show/{id}', 'CharacterController@show')->name('relationships.show');
-Route::get('/relationships/create', 'CharacterController@create')->name('relationships.create');
-Route::post('/relationships/create', 'CharacterController@store')->name('relationships.store');
-Route::get('/relationships/edit/{id}', 'CharacterController@edit')->name('relationships.edit');
-Route::get('/relationships/edit/{id}', 'CharacterController@update')->name('relationships.update');
+// Route::get('/relationships', 'CharacterController@index')->name('relationships.index');
+// Route::get('/relationships/show/{id}', 'CharacterController@show')->name('relationships.show');
+
+Route::get('/relationships/create', 'RelationshipController@create')->name('relationships.create');
+Route::post('/relationships/create', 'RelationshipController@store')->name('relationships.store');
+
+Route::get('/relationships/edit/{id}', 'RelationshipController@edit')->name('relationships.edit');
+Route::get('/relationships/edit/{id}', 'RelationshipController@update')->name('relationships.update');
