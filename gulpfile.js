@@ -15,6 +15,8 @@ const elixir = require('laravel-elixir');
 
 elixir((mix) => {
     mix
+    	.copy('node_modules/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css',
+       		'resources/assets/sass/_switch.scss')
     	.sass(
 		    ['CharDB.scss'],
 		    'public/css/CharDB.css'
@@ -22,5 +24,5 @@ elixir((mix) => {
        .webpack('CharDB.js')
        .scripts('custom.js')
        .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/fonts/bootstrap/')
-       .copy('node_modules/font-awesome/fonts/','public/fonts/font-awesome');
+       .copy('node_modules/font-awesome/fonts/','public/fonts/font-awesome')
 });

@@ -3,6 +3,7 @@
 namespace CharDB\Http\Controllers;
 
 use Illuminate\Http\Request;
+use CharDB\Character;
 
 class RelationshipController extends Controller
 {
@@ -23,7 +24,7 @@ class RelationshipController extends Controller
      */
     public function create()
     {
-        //
+        return view('relationships.create', ['characters' => Character::all()]);
     }
 
     /**
