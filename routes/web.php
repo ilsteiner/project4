@@ -34,7 +34,7 @@ Route::get('/characters/edit/{id}', 'CharacterController@edit')->name('character
 Route::put('/characters/edit/{id}', 'CharacterController@update')->name('characters.update');
 
 // Get route to confirm deletion of character
-//Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('characters.delete');
+Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('characters.delete');
 
 // Actually delete the character
 Route::delete('/characters/{id}', 'CharacterController@destroy')->name('characters.destroy');

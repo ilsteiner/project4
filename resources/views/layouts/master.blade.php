@@ -11,9 +11,17 @@
 <body>
 	<div id="wrapper">
 		@include('layouts.navigation')
-
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
+				@if(Session::has('success'))
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="alert alert-success" role="alert">
+								{{ session('success') }}
+							</div>
+						</div>
+					</div>
+				@endif
 				@yield('content')
 			</div>
 		</div>

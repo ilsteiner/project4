@@ -4,6 +4,7 @@ namespace CharDB\Http\Controllers;
 
 use Illuminate\Http\Request;
 use CharDB\Character;
+use Session;
 use DB;
 
 class CharacterController extends Controller
@@ -142,7 +143,7 @@ class CharacterController extends Controller
     public function delete($id) {
         $character = Character::find($id);
 
-        return view('character.delete')->with('character',$character);
+        return view('characters.delete')->with('character',$character);
     }
 
     /**
@@ -162,7 +163,7 @@ class CharacterController extends Controller
 
         // Get the number of relationships
         // this character is in
-        $relationshipCount = $character->relationship_count();
+        $relationshipCount = $character->relationship_count;
 
         /**
          * Delete the character
@@ -174,14 +175,14 @@ class CharacterController extends Controller
          */
         $character->delete();
 
-        Session::flash('success', $character->full_name() .       
+        Session::flash('success', $character->full_name .       
             ($relationshipCount ?
             // There are relationships
                 ($relationshipCount == 1 
                     // There's only one relationship
-                    ? 'one relationship'
+                    ? ' and one relationship were deleted.'
                     // There's more than one relationship
-                    : $relationshipCount . ' relationships.') 
+                    : ' and ' . $relationshipCount . ' relationships were deleted.') 
             // There are no relationships
             : ' was deleted.'
             ));
