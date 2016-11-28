@@ -28,10 +28,7 @@ class Character extends Model
 	}
 
 	public function getRelationshipCountAttribute(){
-		$characters = Cache::get('characters', function () {
-			return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->get();
-		});
-		return $characters->count();
+		return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->count();
 	}
 
 	public function getRelationshipsAttribute(){
