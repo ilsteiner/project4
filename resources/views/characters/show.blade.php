@@ -60,13 +60,15 @@
 	</div>
 </div>
 
-@if($character->long_description != null)
+@if($character->long_description != null || $character->relationship_count > 0)
 <div class="row">
-	<div class="col-xs-8 show-long-description">
-		<div class="well well-lg">
-			{{ $character->long_description }}
+	@if($character->long_description != null)
+		<div class="col-xs-8 show-long-description">
+			<div class="well well-lg">
+				{{ $character->long_description }}
+			</div>
 		</div>
-	</div>
+	@endif
 
 	@if($character->relationship_count > 0)
 		<div class="col-xs-2 relationships-with-others show-relationships">
@@ -77,6 +79,9 @@
 			<ul id='relationships'>
 				@foreach($character->relationships as $relationship)
 					<li class="relationship">
+						<a href="{{ route('relationships.edit', ['id' => $relationship->id]) }}">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</a>
 						{{ $character->first_name . ' ' . $relationship->name }}
 						
 						<a href="{{ route('characters.show', ['id' => $relationship->is_related_to]) }}">
@@ -95,6 +100,10 @@
 			<ul id='relationships-with'>
 				@foreach($character->relationships_with as $relationship)
 					<li class="relationship">
+						<a href="{{ route('relationships.edit', ['id' => $relationship->id]) }}">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</a>
+					
 						<a href="{{ route('characters.show', ['id' => $relationship->character]) }}">
 							{{ $relationship->character_name }}
 						</a>

@@ -17,9 +17,9 @@
 			      <option 
 			      	class="character-option" 
 			      	value="{{$character->id}}"
-			      	{{-- {{ (isset($character->sex) 
-			      			? ($character->sex == $sex->id ? "selected" : "") 
-			      			: "") }} --}}
+			      	{{ (isset($relationships[0]->character) 
+			      			? ($relationships[0]->character == $character->id ? "selected" : "") 
+			      			: "") }}
 			      >
 			      	{{$character->full_name}}
 			      </option>
@@ -40,7 +40,7 @@
 				placeholder="Friends With" 
 				class="form-control input-lg" 
 				required
-				value="{{ (isset($relationship[0]->name) ? $relationship[0]->name : "" )}}">
+				value="{{ (isset($relationships[0]->name) ? $relationships[0]->name : "" )}}">
 			{{-- @if($errors->has('relationship[0]'))
 				<span class="help-block">{{ $errors->first('relationship[0]') }}</span>
 			@endif --}}
@@ -67,9 +67,9 @@
 				      <option 
 				      	class="character-option" 
 				      	value="{{$character->id}}"
-				      	{{-- {{ (isset($character->sex) 
-				      			? ($character->sex == $sex->id ? "selected" : "") 
-				      			: "") }} --}}
+				      	{{ (isset($relationships[0]->is_related_to) 
+			      			? ($relationships[0]->is_related_to == $character->id ? "selected" : "") 
+			      			: "") }}
 				      >
 				      	{{$character->full_name}}
 				      </option>
@@ -85,13 +85,21 @@
 {{-- Text representation of first fields --}}
 <div class="row">
 	<div class="col-md-4 rel-text character-text">
-		Character 1
+		{{ 
+			(isset($relationships[0]->character) ? 
+				$characters->find($relationships[0]->character)->full_name : 
+				"Character 1") 
+		}}
 	</div>
 	<div class="col-md-4 rel-text rel-1-text">
-		is friends with
+		{{ (isset($relationships[0]->name) ? $relationships[0]->name : "is friends with" )}}
 	</div>
 	<div class="col-md-4 rel-text related-to-text">
-		Character 2
+		{{ 
+			(isset($relationships[0]->is_related_to) ? 
+				$characters->find($relationships[0]->is_related_to)->full_name : 
+				"Character 2")
+		}}
 	</div>
 </div>
 
@@ -124,8 +132,7 @@
 		<div class="col-md-4">
 			<div class="form-group{{ ($errors->has('rel_2_character') ? ' has-error' : '' ) }}">
 				{{-- <label class="required" for="character">Character</label> --}}
-				<select 
-					required 
+				<select
 					disabled 
 					class="form-control input-lg" 
 					id="rel_2_character" 
@@ -165,8 +172,7 @@
 					name="rel_2_name" 
 					placeholder="Friends With" 
 					class="form-control input-lg" 
-					required
-					value="{{ (isset($relationship[0]->name) ? $relationship[0]->name : "" )}}">
+					value="{{ (isset($relationships[1]->name) ? $relationships[1]->name : "" )}}">
 				{{-- @if($errors->has('relationship[0]'))
 					<span class="help-block">{{ $errors->first('relationship[0]') }}</span>
 				@endif --}}
@@ -176,7 +182,7 @@
 			<div class="form-group{{ ($errors->has('rel_2_related_to') ? ' has-error' : '' ) }}">
 				{{-- <label class="required" for="character">Character</label> --}}
 				<select 
-					required class="form-control input-lg" 
+					class="form-control input-lg" 
 					disabled 
 					id="rel_2_related_to" 
 					name="rel_2_related_to" 

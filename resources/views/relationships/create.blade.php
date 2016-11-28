@@ -6,7 +6,7 @@ Create Relationship
 
 @section('content')
 <div class="row">
-	<form action="/relationships/create" method="POST">
+	<form name="create-relationship" action="/relationships/create" method="POST">
 		{{ method_field('PUT') }}
 		@include('relationships.form');
 
