@@ -150,9 +150,9 @@
 				      <option 
 				      	class="character-option" 
 				      	value="{{$character->id}}"
-				      	{{-- {{ (isset($character->sex) 
-				      			? ($character->sex == $sex->id ? "selected" : "") 
-				      			: "") }} --}}
+				      	{{ (isset($relationships[1]->character) 
+			      			? ($relationships[1]->character == $character->is_related_to ? "selected" : "") 
+			      			: "") }}
 				      >
 				      	{{$character->full_name}}
 				      </option>
@@ -200,9 +200,9 @@
 					      <option 
 					      	class="character-option" 
 					      	value="{{$character->id}}"
-					      	{{-- {{ (isset($character->sex) 
-					      			? ($character->sex == $sex->id ? "selected" : "") 
-					      			: "") }} --}}
+					      	{{ (isset($relationships[1]->is_related_to) 
+				      			? ($relationships[1]->is_related_to == $character->id ? "selected" : "") 
+				      			: "") }}
 					      >
 					      	{{$character->full_name}}
 					      </option>
