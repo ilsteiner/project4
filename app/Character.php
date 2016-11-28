@@ -4,6 +4,7 @@ namespace CharDB;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 class Character extends Model
 {
@@ -27,7 +28,10 @@ class Character extends Model
 	}
 
 	public function getRelationshipCountAttribute(){
-		return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->count();
+		$characters = Cache::get('characters', function () {
+			return DB::table('relationships')->where('character', '=', $this->id)->orWhere('is_related_to', '=', $this->id)->get();
+		});
+		return $characters->count();
 	}
 
 	public function getRelationshipsAttribute(){
