@@ -3,7 +3,6 @@
 <div class="row">
 	<div class="col-md-4">
 		<div class="form-group{{ ($errors->has('rel_1_character') ? ' has-error' : '' ) }}">
-			{{-- <label class="required" for="character">Character</label> --}}
 			<select required class="form-control input-lg" id="rel_1_character" name="rel_1_character" class="form-control input-lg">
 				<option
 					class="character-option"
@@ -25,14 +24,13 @@
 			      </option>
 			    @endforeach
 		    </select>
-		    {{-- @if($errors->has('sex'))
-				<span class="help-block">{{ $errors->first('sex') }}</span>
-			@endif --}}
+		    @if($errors->has('rel_1_character'))
+				<span class="help-block">{{ $errors->first('rel_1_character') }}</span>
+			@endif
 		</div>
 	</div>
 	<div class="col-md-4">
 		<div class="form-group{{ ($errors->has('rel_1_name') ? ' has-error' : '' ) }}">
-			{{-- <label for="name">Relationship Name</label> --}}
 			<input 
 				type="text" 
 				id="rel_1_name" 
@@ -41,14 +39,13 @@
 				class="form-control input-lg" 
 				required
 				value="{{ (isset($relationships[0]->name) ? $relationships[0]->name : "" )}}">
-			{{-- @if($errors->has('relationship[0]'))
-				<span class="help-block">{{ $errors->first('relationship[0]') }}</span>
-			@endif --}}
+			@if($errors->has('rel_1_name'))
+				<span class="help-block">{{ $errors->first('rel_1_name') }}</span>
+			@endif
 		</div>
 	</div>
 	<div class="col-md-4">
 		<div class="form-group{{ ($errors->has('rel_1_related_to') ? ' has-error' : '' ) }}">
-			{{-- <label class="required" for="character">Character</label> --}}
 			<select 
 				required class="form-control input-lg" 
 				id="rel_1_related_to" 
@@ -75,9 +72,9 @@
 				      </option>
 				    @endforeach
 		    </select>
-		    {{-- @if($errors->has('sex'))
-				<span class="help-block">{{ $errors->first('sex') }}</span>
-			@endif --}}
+		    @if($errors->has('rel_1_related_to'))
+				<span class="help-block">{{ $errors->first('rel_1_related_to') }}</span>
+			@endif
 		</div>
 	</div>
 </div>
@@ -105,127 +102,130 @@
 
 <hr>
 
-{{-- Bidirectional switch --}}
-<div class="row">
-	<div class="col-md-12 col-md-offset-4">
-		<div class="form-group">
-			<input
-				class="form-control input-lg"
-				type="checkbox"
-				name="bidirectional"
-				data-size="large"
-				data-inverse="true"
-				data-off-text="Unidirectional"
-				data-on-text="Bidirectional"
-				data-on-color="success"
-				data-off-color="danger"
-			>
+{{-- Hide on edit because we don't handle editing bidirectionals --}}
+@if(\Route::current()->getName() == 'relationships.create')
+
+	{{-- Bidirectional switch --}}
+	<div class="row">
+		<div class="col-md-12 col-md-offset-4">
+			<div class="form-group">
+				<input
+					class="form-control input-lg {{ (old('bidirectional') ? "show" : "")}}"
+					type="checkbox"
+					name="bidirectional"
+					data-size="large"
+					data-inverse="true"
+					data-off-text="Unidirectional"
+					data-on-text="Bidirectional"
+					data-on-color="success"
+					data-off-color="danger"
+					data-label-width="auto"
+					data-handle-width="auto"
+				>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div id="bidirectional">
-	<hr>
+	<div id="bidirectional">
+		<hr>
 
-	{{-- Second set of fields --}}
-	<div class="row">
-		<div class="col-md-4">
-			<div class="form-group{{ ($errors->has('rel_2_character') ? ' has-error' : '' ) }}">
-				{{-- <label class="required" for="character">Character</label> --}}
-				<select
-					disabled 
-					class="form-control input-lg" 
-					id="rel_2_character" 
-					name="rel_2_character" 
-					class="form-control input-lg">
-					<option
-						class="character-option"
-						value=""
-						disabled
-						selected
-					>
-						Character 2
-					</option>
-				    @foreach($characters as $character)
-				      <option 
-				      	class="character-option" 
-				      	value="{{$character->id}}"
-				      	{{ (isset($relationships[1]->character) 
-			      			? ($relationships[1]->character == $character->is_related_to ? "selected" : "") 
-			      			: "") }}
-				      >
-				      	{{$character->full_name}}
-				      </option>
-				    @endforeach
-			    </select>
-			    {{-- @if($errors->has('sex'))
-					<span class="help-block">{{ $errors->first('sex') }}</span>
-				@endif --}}
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="form-group{{ ($errors->has('rel_2_name') ? ' has-error' : '' ) }}">
-				{{-- <label for="name">Relationship Name</label> --}}
-				<input 
-					type="text" 
-					id="rel_2_name" 
-					name="rel_2_name" 
-					placeholder="Friends With" 
-					class="form-control input-lg" 
-					value="{{ (isset($relationships[1]->name) ? $relationships[1]->name : "" )}}">
-				{{-- @if($errors->has('relationship[0]'))
-					<span class="help-block">{{ $errors->first('relationship[0]') }}</span>
-				@endif --}}
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="form-group{{ ($errors->has('rel_2_related_to') ? ' has-error' : '' ) }}">
-				{{-- <label class="required" for="character">Character</label> --}}
-				<select 
-					class="form-control input-lg" 
-					disabled 
-					id="rel_2_related_to" 
-					name="rel_2_related_to" 
-					class="form-control input-lg">
-
+		{{-- Second set of fields --}}
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group{{ ($errors->has('rel_2_character') ? ' has-error' : '' ) }}">
+					<select
+						disabled 
+						class="form-control input-lg" 
+						id="rel_2_character" 
+						name="rel_2_character" 
+						class="form-control input-lg">
 						<option
 							class="character-option"
 							value=""
 							disabled
 							selected
 						>
-							Character 1
+							Character 2
 						</option>
 					    @foreach($characters as $character)
 					      <option 
 					      	class="character-option" 
 					      	value="{{$character->id}}"
-					      	{{ (isset($relationships[1]->is_related_to) 
-				      			? ($relationships[1]->is_related_to == $character->id ? "selected" : "") 
+					      	{{ (isset($relationships[1]->character) 
+				      			? ($relationships[1]->character == $character->is_related_to ? "selected" : "") 
 				      			: "") }}
 					      >
 					      	{{$character->full_name}}
 					      </option>
 					    @endforeach
-			    </select>
-			    <span class="related_to_char_1">Character 1</span>
-			    {{-- @if($errors->has('sex'))
-					<span class="help-block">{{ $errors->first('sex') }}</span>
-				@endif --}}
+				    </select>
+				    @if($errors->has('rel_2_character'))
+						<span class="help-block">{{ $errors->first('rel_2_character') }}</span>
+					@endif
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group{{ ($errors->has('rel_2_name') ? ' has-error' : '' ) }}">
+					<input 
+						type="text" 
+						id="rel_2_name" 
+						name="rel_2_name" 
+						placeholder="Friends With" 
+						class="form-control input-lg" 
+						value="{{ (isset($relationships[1]->name) ? $relationships[1]->name : "" )}}">
+					@if($errors->has('rel_2_name'))
+						<span class="help-block">{{ $errors->first('rel_2_name') }}</span>
+					@endif
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group{{ ($errors->has('rel_2_related_to') ? ' has-error' : '' ) }}">
+					<select 
+						class="form-control input-lg" 
+						disabled 
+						id="rel_2_related_to" 
+						name="rel_2_related_to" 
+						class="form-control input-lg">
+
+							<option
+								class="character-option"
+								value=""
+								disabled
+								selected
+							>
+								Character 1
+							</option>
+						    @foreach($characters as $character)
+						      <option 
+						      	class="character-option" 
+						      	value="{{$character->id}}"
+						      	{{ (isset($relationships[1]->is_related_to) 
+					      			? ($relationships[1]->is_related_to == $character->id ? "selected" : "") 
+					      			: "") }}
+						      >
+						      	{{$character->full_name}}
+						      </option>
+						    @endforeach
+				    </select>
+				    <span class="related_to_char_1">Character 1</span>
+				    @if($errors->has('rel_2_related_to'))
+						<span class="help-block">{{ $errors->first('rel_2_related_to') }}</span>
+					@endif
+				</div>
+			</div>
+		</div>
+
+		{{-- Text representation of second fields --}}
+		<div class="row">
+			<div class="col-md-4 rel-text related-to-text">
+				Character 2
+			</div>
+			<div class="col-md-4 rel-text rel-2-text">
+				is friends with
+			</div>
+			<div class="col-md-4 rel-text character-text">
+				Character 1
 			</div>
 		</div>
 	</div>
-
-	{{-- Text representation of second fields --}}
-	<div class="row">
-		<div class="col-md-4 rel-text related-to-text">
-			Character 2
-		</div>
-		<div class="col-md-4 rel-text rel-2-text">
-			is friends with
-		</div>
-		<div class="col-md-4 rel-text character-text">
-			Character 1
-		</div>
-	</div>
-</div>
+@endif

@@ -73,6 +73,11 @@ jQuery(document).ready(function () {
 		jQuery(".rel-2-text").text(jQuery(this).val());
 	});
 	
+
+	//Show the bidirectional relationship if we're coming back from validation
+	if($('.bootstrap-switch-container input.form-control').hasClass('show')) {
+		$('[name="bidirectional"]').bootstrapSwitch('state',true);
+	}
 });
 
 //# sourceMappingURL=custom.js.map

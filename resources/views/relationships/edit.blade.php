@@ -6,7 +6,7 @@ Edit Relationship
 
 @section('content')
 <div class="row">
-	<form name="edit-relationship" action="/relationships/update" method="POST">
+	<form name="edit-relationship" action="/relationships/edit/{{$relationships[0]->id}}" method="POST">
 		{{ method_field('PUT') }}
 		@include('relationships.form');
 

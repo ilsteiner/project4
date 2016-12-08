@@ -73,7 +73,8 @@ class RelationshipController extends Controller
         }
 
         return redirect()->route('characters.show', 
-            ['character' => Character::find($relationship1->character)]);
+            ['character' => Character::find($relationship1->character),
+             'bidirectional' => ($request->bidirectional ? true : false)]);
     }
 
     /**
@@ -124,7 +125,31 @@ class RelationshipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Get all valid characters as a comma-separated list
+        $characters = implode(",",Character::all()->pluck('id')->toArray());
+
+        $this->validate($request,
+            [
+                "rel_1_character" => "required|different:rel_1_related_to|in:" . $characters,
+                "rel_1_name" => "required|max:" . config('field_lengths.short_description'),
+                "rel_1_related_to" => "required|different:rel_1_character|in:" . $characters,
+                "rel_2_name" => "required_with:bidirectional|max:" . config('field_lengths.short_description')
+            ]
+            );
+
+        $relationship = Relationship::find($id);
+
+        $relationship->name = $request->rel_1_name;
+        $relationship->character = $request->rel_1_character;
+        $relationship->is_related_to = $request->rel_1_related_to;
+
+        $relationship->save();
+
+        $request->session()->flash('success', 
+            Relationship::find($relationship->id)->to_string . " was updated!");
+
+        return redirect()->route('characters.show', 
+            ['character' => Character::find(Relationship::find($id)->character)]);
     }
 
     /**
