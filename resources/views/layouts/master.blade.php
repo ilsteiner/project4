@@ -22,6 +22,15 @@
 						</div>
 					</div>
 				@endif
+				@if(Session::has('success2'))
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="alert alert-success" role="alert">
+								{{ session('success2') }}
+							</div>
+						</div>
+					</div>
+				@endif
 				@yield('content')
 			</div>
 		</div>

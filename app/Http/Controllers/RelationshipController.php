@@ -64,12 +64,11 @@ class RelationshipController extends Controller
 
             $relationship2->save();
 
-            $request->session()->flash('success', $relationship2->to_string);            
+            $request->session()->flash('success2', $relationship2->to_string . " was created!");            
         }
 
         return redirect()->route('characters.show', 
-            ['character' => Character::find($relationship1->character),
-             'bidirectional' => ($request->bidirectional ? true : false)]);
+            ['character' => Character::find($relationship1->character)]);
     }
 
     /**
