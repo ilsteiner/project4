@@ -24,4 +24,12 @@ class Relationship extends Model
 
 		return $string;
 	}
+
+	public function getToStringDescAttribute(){
+		$string = $this->character_name . " ";
+		$string .= $this->name . " ";
+		$string .= $this->related_to_name;
+
+		return $string;
+	}
 }

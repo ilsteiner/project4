@@ -49,3 +49,5 @@ Route::put('/relationships/create', 'RelationshipController@store')->name('relat
 Route::get('/relationships/edit/{id}', 'RelationshipController@edit')->name('relationships.edit');
 
 Route::put('/relationships/edit/{id}', 'RelationshipController@update')->name('relationships.update');
+Route::get('/relationships/delete/{id}', 'RelationshipController@delete')->name('relationships.delete');
+Route::delete('/relationships/{id}', 'RelationshipController@destroy')->name('relationships.destroy');

@@ -110,13 +110,42 @@
 
 						{{ $relationship->name . ' ' . $character->first_name }}
 
+						{{-- Display an icon to view the description if there is one --}}
 						@if($relationship->description != null)
-							<a href="{{ route('relationships.show', ['id' => $relationship->id]) }}"
-							   title="Read more">
-									<i class="fa fa-2x fa-info-circle" aria-hidden="true"></i>
-							</a>
+							<span data-toggle="modal" data-target="#modal{{$relationship->id}}">
+								<i
+									data-toggle="tooltip"
+									class="fa fa-align-left"
+									data-placement="left"
+									title="View full description"
+									aria-hidden="true">		
+								</i>
+							</span>
 						@endif
 					</li>
+
+					{{-- A modal to display the relationship description if there is one --}}
+					@if($relationship->description != null)
+						<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="modalHeader{{$relationship->id}}">{{$relationship->to_string}}</h4>
+									</div>
+									<div class="modal-body">
+										<div class="well well-desc well-sm text-center">
+											{{$relationship->to_string_desc}}
+										</div>
+										{{$relationship->description}}
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endif
 				@endforeach
 			</ul>
 		</div>
@@ -128,17 +157,18 @@
 	<div class="col-md-4">
 		<a href="/characters/edit/{{ $character->id }}">
 			<button class="btn btn-info btn-block form-btn">
-				<i class="fa fa-trash" aria-hidden="true"></i>
+				<i class="fa fa-pencil" aria-hidden="true"></i>
 				Edit
 			</button>
 		</a>
 	</div>
 	<div class="col-md-4">
-		<a href="/characters/delete/{{ $character->id }}">
-			<button class="btn btn-danger btn-block form-btn">
-				<i class="fa fa-pencil" aria-hidden="true"></i>
-				Delete
-			</button>
+		<a 
+			href="/characters/delete/{{ $character->id }}"
+			class="btn btn-danger btn-block form-btn"
+		>
+			<i class="fa fa-trash" aria-hidden="true"></i>
+			Delete
 		</a>
 	</div>
 </div>

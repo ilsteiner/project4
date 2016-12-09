@@ -79,6 +79,14 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-md-12">
+		<div class="form-group{{ ($errors->has('rel_1_description') ? ' has-error' : '' ) }}">
+		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description"></textarea>
+		</div>
+	</div>
+</div>
+
 {{-- Text representation of first fields --}}
 <div class="row">
 	<div class="col-md-4 rel-text character-text">
@@ -211,6 +219,14 @@
 				    @if($errors->has('rel_2_related_to'))
 						<span class="help-block">{{ $errors->first('rel_2_related_to') }}</span>
 					@endif
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group{{ ($errors->has('rel_2_description') ? ' has-error' : '' ) }}">
+				<textarea id="rel_2_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_2_description"></textarea>
 				</div>
 			</div>
 		</div>

@@ -3,21 +3,12 @@
 namespace CharDB\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use CharDB\Relationship;
 use CharDB\Character;
 
 class RelationshipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +35,9 @@ class RelationshipController extends Controller
                 "rel_1_character" => "required|different:rel_1_related_to|in:" . $characters,
                 "rel_1_name" => "required|max:" . config('field_lengths.short_description'),
                 "rel_1_related_to" => "required|different:rel_1_character|in:" . $characters,
-                "rel_2_name" => "required_with:bidirectional|max:" . config('field_lengths.short_description')
+                "rel_1_description" => "max:" . config('field_lengths.long_description'),
+                "rel_2_name" => "required_with:bidirectional|max:" . config('field_lengths.short_description'),
+                "rel_2_description" => "max:" . config('field_lengths.long_description')
             ]
             );
 
@@ -53,6 +46,7 @@ class RelationshipController extends Controller
         $relationship1->name = $request->rel_1_name;
         $relationship1->character = $request->rel_1_character;
         $relationship1->is_related_to = $request->rel_1_related_to;
+        $relationship1->description = $request->rel_1_description;
 
         $relationship1->save();
 
@@ -66,6 +60,7 @@ class RelationshipController extends Controller
             $relationship2->name = $request->rel_2_name;
             $relationship2->character = $request->rel_1_related_to;
             $relationship2->is_related_to = $request->rel_1_character;
+            $relationship2->description = $request->rel_2_description;
 
             $relationship2->save();
 
@@ -153,6 +148,19 @@ class RelationshipController extends Controller
     }
 
     /**
+     * Confirm deletion of the relationship
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $relationship = Relationship::find($id);
+
+        return view('relationships.delete')->with('relationship',$relationship);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -160,6 +168,20 @@ class RelationshipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $relationship = Relationship::find($id);
+
+        if(is_null($relationship)) {
+            Session::flash('error','Relationship ' . $id . ' not found');
+            return redirect('/characters');
+        }
+
+        /**
+         * Delete the relationship
+         */
+        $relationship->delete();
+
+        Session::flash('success', "The " . $relationship->to_string . " was deleted!");
+
+        return redirect('/characters');
     }
 }

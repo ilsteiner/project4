@@ -6,6 +6,10 @@
 	display: none;
 }
 
-/* .bootstrap-switch-container span {
-	font-size: 3vw !important;
-} */
+a.white-link {
+	color: white;
+}
+
+a.white-link:active {
+	text-decoration: none;
+}

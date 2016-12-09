@@ -8433,6 +8433,9 @@ button.form-btn.btn {
 li.relationship {
   list-style-type: none; }
 
+.well-desc {
+  font-weight: bold; }
+
 #sex {
   text-transform: capitalize; }
 
@@ -8442,9 +8445,12 @@ li.relationship {
 #bidirectional {
   display: none; }
 
-/* .bootstrap-switch-container span {
-	font-size: 3vw !important;
-} */
+a.white-link {
+  color: white; }
+
+a.white-link:active {
+  text-decoration: none; }
+
 label.required:after {
   content: "required";
   font-size: .6em;

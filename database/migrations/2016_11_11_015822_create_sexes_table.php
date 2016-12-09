@@ -29,6 +29,6 @@ class CreateSexesTable extends Migration
      */
     public function down()
     {
-        $Schema::drop('sexes');
+        Schema::dropIfExists('sexes');
     }
 }

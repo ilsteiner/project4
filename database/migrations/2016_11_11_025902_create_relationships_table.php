@@ -18,7 +18,7 @@ class CreateRelationshipsTable extends Migration
             $table->timestamps();
 
             $table->string('name',config('field_lengths.relationship'));
-            $table->string('description', config('field_lengths.short_description'))->nullable();
+            $table->string('description', config('field_lengths.long_description'))->nullable();
             $table->integer('character')->unsigned();
             $table->integer('is_related_to')->unsigned();
             $table->foreign('character')->references('id')->on('characters')->onDelete('cascade');
@@ -33,6 +33,6 @@ class CreateRelationshipsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('relationships');
+        Schema::dropIfExists('relationships');
     }
 }
