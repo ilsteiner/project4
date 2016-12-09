@@ -14,16 +14,16 @@
 				<i class="fa fa-plus-circle rel-plus" aria-hidden="true"></i>
 			</a>
 			@if(!Auth::check())
-				<button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+				<button class="btn btn-sm btn-primary" id="loginButton" data-toggle="modal" data-target="#loginModal">
 					Login
 				</button>
-				<button class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+				<button class="btn btn-sm btn-info" id="registerButton" data-toggle="modal" data-target="#registerModal">
 					Register
 				</button>
 			@endif
 			@if(Auth::check())
 				<a class="brand" href="/logout">
-					<button class="btn btn-danger">
+					<button class="btn btn-sm btn-danger">
 						Logout
 					</button>
 				</a>
