@@ -78,6 +78,12 @@ jQuery(document).ready(function () {
 	if($('.bootstrap-switch-container input.form-control').hasClass('show')) {
 		$('[name="bidirectional"]').bootstrapSwitch('state',true);
 	}
+
+	//Show the login or registration modals if we're coming back with an error
+	var errors = $(".form-group.has-error");
+	if(errors.length){
+		errors.parents("div.modal").modal("show");
+	}
 });
 
 //# sourceMappingURL=custom.js.map

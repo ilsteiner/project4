@@ -26,6 +26,9 @@
 			</div>
 		</div>
 	</div>
+
+	@include('auth.login');
+	@include('auth.register');
 <script src="/js/CharDB.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/custom.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>

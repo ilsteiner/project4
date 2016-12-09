@@ -51,3 +51,10 @@ Route::get('/relationships/edit/{id}', 'RelationshipController@edit')->name('rel
 Route::put('/relationships/edit/{id}', 'RelationshipController@update')->name('relationships.update');
 Route::get('/relationships/delete/{id}', 'RelationshipController@delete')->name('relationships.delete');
 Route::delete('/relationships/{id}', 'RelationshipController@destroy')->name('relationships.destroy');
+
+Auth::Routes();
+
+// Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+// Route::post('password/reset', 'ResetPasswordController@reset');
+
+Route::get('/home', 'HomeController@index');

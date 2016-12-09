@@ -13,6 +13,12 @@
 				<i class="fa fa-sitemap" aria-hidden="true"></i>
 				<i class="fa fa-plus-circle rel-plus" aria-hidden="true"></i>
 			</a>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+				Login
+			</button>
+			<button class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+				Register
+			</button>
 		</li>
 
 		@foreach($characters as $character)
