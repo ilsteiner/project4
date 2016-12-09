@@ -15,8 +15,7 @@ Create Relationship
 			class="btn btn-primary btn-block" 
 			type="submit">
 				<i class="fa fa-floppy-o" aria-hidden="true"></i>
-				Create Relationship
-		</button>
+				Create Relationship</button>
 	</form>
 </div>
 @stop
