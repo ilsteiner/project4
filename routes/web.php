@@ -22,7 +22,7 @@ Route::get('/characters', 'CharacterController@index')->name('characters.index')
 Route::get('/characters/show/{id}', 'CharacterController@show')->name('characters.show');
 
 // Show form to create a character
-Route::get('/characters/create', 'CharacterController@create')->name('characters.create');
+Route::get('/characters/create', 'CharacterController@create')->name('characters.create')->middleware('auth');
 
 // Process form to create a character
 Route::put('/characters/create', 'CharacterController@store')->name('characters.store');
@@ -52,11 +52,24 @@ Route::put('/relationships/edit/{id}', 'RelationshipController@update')->name('r
 Route::get('/relationships/delete/{id}', 'RelationshipController@delete')->name('relationships.delete');
 Route::delete('/relationships/{id}', 'RelationshipController@destroy')->name('relationships.destroy');
 
-Auth::Routes();
+Route::get('logout',array('uses' => 'HomeController@logout'));
+// Route::get('login',array('uses' => 'CharacterController@index'));
 
-Route::get('/logout',array('uses' => 'HomeController@logout'));
+Route::group(['middleware' => ['web']], function() {
 
-// Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
-// Route::post('password/reset', 'ResetPasswordController@reset');
+// Login Routes...
+    Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
+    Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
+// Registration Routes...
+    //Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+    Route::post('register', ['as' => 'register.post', 'uses' => 'Auth\RegisterController@register']);
+
+// Password Reset Routes...
+    Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
+    Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
+});
 
 Route::get('/home', 'HomeController@index');
