@@ -8412,6 +8412,9 @@ body {
 #loginButton {
   margin-left: 30%; }
 
+#logoutButton {
+  margin-left: 40%; }
+
 div.count-num {
   font-size: 15vw;
   font-weight: 400;
