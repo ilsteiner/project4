@@ -54,6 +54,8 @@ Route::delete('/relationships/{id}', 'RelationshipController@destroy')->name('re
 
 Auth::Routes();
 
+Route::get('/logout',array('uses' => 'HomeController@logout'));
+
 // Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
 // Route::post('password/reset', 'ResetPasswordController@reset');
 

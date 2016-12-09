@@ -6,6 +6,7 @@ use CharDB\User;
 use CharDB\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -45,7 +46,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data, Request $request)
     {
         return Validator::make($data, [
             'reg_name' => 'required|max:255',
@@ -64,7 +65,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['reg_name'],
-            'email' => $data['email'],
+            'email' => $data['reg_email'],
             'password' => bcrypt($data['reg_password']),
         ]);
     }
