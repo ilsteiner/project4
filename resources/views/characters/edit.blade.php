@@ -10,7 +10,10 @@ Edit {{ $character->full_name }}
 		{{ method_field('PUT') }}
 		@include('characters.form');
 
-		<button class="btn btn-primary btn-block" type="submit">Save Character</button>
+		<button class="btn btn-primary btn-block" type="submit">
+			<i class="fa fa-floppy-o" aria-hidden="true"></i>
+			Save Character
+		</button>
 	</form>
 </div>
 @stop

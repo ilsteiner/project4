@@ -13,7 +13,10 @@ Create Relationship
 		<button 
 			id="rel-btn" 
 			class="btn btn-primary btn-block" 
-			type="submit">Create Relationship</button>
+			type="submit">
+				<i class="fa fa-floppy-o" aria-hidden="true"></i>
+				Create Relationship
+		</button>
 	</form>
 </div>
 @stop
