@@ -1,5 +1,6 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Archivo+Black);
 
 // Variables
 @import "variables";
@@ -17,6 +18,7 @@
 @import "sidebar";
 
 //Individual pages
+@import "character.index";
 @import "character.show";
 @import "character.create";
 @import "relationship.create";

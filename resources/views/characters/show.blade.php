@@ -71,7 +71,7 @@
 	@endif
 
 	@if($character->relationship_count > 0)
-		<div class="col-xs-2 relationships-with-others show-relationships">
+		<div class="col-xs-4 relationships-with-others show-relationships">
 			<div class="relationship-section-title">
 				{{ $character->first_name }} and others
 			</div>
@@ -87,12 +87,48 @@
 						<a href="{{ route('characters.show', ['id' => $relationship->is_related_to]) }}">
 							{{ $relationship->related_to_name }}
 						</a>
+
+						{{-- Display an icon to view the description if there is one --}}
+						@if($relationship->description != null)
+							<span data-toggle="modal" data-target="#modal{{$relationship->id}}">
+								<i
+									data-toggle="tooltip"
+									class="fa fa-align-left"
+									data-placement="top"
+									title="View full description"
+									aria-hidden="true">		
+								</i>
+							</span>
+						@endif
 					</li>
+
+					{{-- A modal to display the relationship description if there is one --}}
+					@if($relationship->description != null)
+						<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="modalHeader{{$relationship->id}}">{{$relationship->to_string}}</h4>
+									</div>
+									<div class="modal-body">
+										<div class="well well-desc well-sm text-center">
+											{{$relationship->to_string_desc}}
+										</div>
+										{{$relationship->description}}
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					@endif
 				@endforeach
 			</ul>
 		</div>
 
-		<div class="col-xs-2 relationships-with-self show-relationships">
+		<div class="col-xs-4 relationships-with-self show-relationships">
 			<div class="relationship-section-title">
 				Others and {{ $character->first_name }}
 			</div>
@@ -116,7 +152,7 @@
 								<i
 									data-toggle="tooltip"
 									class="fa fa-align-left"
-									data-placement="left"
+									data-placement="top"
 									title="View full description"
 									aria-hidden="true">		
 								</i>
@@ -154,7 +190,7 @@
 @endif
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-5">
 		<a href="/characters/edit/{{ $character->id }}">
 			<button class="btn btn-info btn-block form-btn">
 				<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -162,10 +198,10 @@
 			</button>
 		</a>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<a 
 			href="/characters/delete/{{ $character->id }}"
-			class="btn btn-danger btn-block form-btn"
+			class="btn btn-danger btn-lg btn-block form-btn"
 		>
 			<i class="fa fa-trash" aria-hidden="true"></i>
 			Delete

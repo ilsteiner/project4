@@ -4,6 +4,7 @@ namespace CharDB\Http\Controllers;
 
 use Illuminate\Http\Request;
 use CharDB\Character;
+use CharDB\Relationship;
 use Session;
 use DB;
 
@@ -16,7 +17,11 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        return view('characters.index', ['characters' => Character::all()]);
+        return view('characters.index', 
+            [
+                'characters' => Character::count(),
+                'relationships' => Relationship::count()
+            ]);
     }
 
     /**

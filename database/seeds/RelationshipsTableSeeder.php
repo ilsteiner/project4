@@ -31,7 +31,8 @@ class RelationshipsTableSeeder extends Seeder
 
 	        	'name' => $relationships[array_rand($relationships)],
 	        	'character' => $character->id,
-	        	'is_related_to' => DB::table('characters')->inRandomOrder()->first()->id
+	        	'is_related_to' => DB::table('characters')->inRandomOrder()->first()->id,
+                'description' => self::getDescription('long')
 	        	]);
         	}
         }

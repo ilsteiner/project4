@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Archivo+Black);
 /* My varaibles */
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -8404,6 +8405,21 @@ body {
 
 .light-tooltip-right + .tooltip > .tooltip-arrow {
   border-right-color: #999999; }
+
+div.count-num {
+  font-size: 15vw;
+  font-weight: 400;
+  font-family: 'Archivo Black', sans-serif;
+  color: #444444; }
+
+div.count-desc {
+  font-size: 3em;
+  font-weight: 300; }
+
+button.rand-char {
+  font-size: 2em;
+  font-weight: 300;
+  margin-top: 50px; }
 
 div.show-name {
   font-size: 5vw; }

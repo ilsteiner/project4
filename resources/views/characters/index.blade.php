@@ -5,18 +5,29 @@ Characters
 @stop
 
 @section('content')
-	<div class="row">
-		@foreach($characters as $character)
-			<div class="col-md-6">
-				<ul class="character-fields">
-					<li>
-						Name: {{ $character->full_name }}
-					</li>
-					<li>
-						Sex: {{ $character->sex_name }}
-					</li>
-				</ul>
+	<div class="row text-center counts">
+		<div class="col-md-6">
+			<div class="count-num">
+				{{$characters}}
 			</div>
-		@endforeach
+			<div class="count-desc">
+				Characters
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="count-num">
+				{{$relationships}}
+			</div>
+			<div class="count-desc">
+				Relationships
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<button class="btn btn-success btn-lg btn-block rand-char">
+				Random Character
+			</button>
+		</div>
 	</div>
 @stop

@@ -14,6 +14,7 @@
 				<i class="fa fa-plus-circle rel-plus" aria-hidden="true"></i>
 			</a>
 		</li>
+
 		@foreach($characters as $character)
 			<li>
 				<a 
@@ -22,7 +23,7 @@
 				>
 
 					{{-- Displays icon based on sex of character, looking up unicode for font-awesome --}}
-					<span class="fa" aria-hidden="true">{{ '&#x' . $character->sex_icon . ';'}}</span>
+					<span class="fa" aria-hidden="true">{{ '&#x' . $sexes[$character->sex]->icon . ';'}}</span>
 
 					{{-- Character name --}}
 					<span 
