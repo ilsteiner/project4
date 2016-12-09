@@ -22,8 +22,8 @@ Route::get('/characters', 'CharacterController@index')->name('characters.index')
 Route::get('/characters/show/{id}', 'CharacterController@show')->name('characters.show');
 
 // Show form to create a character
-Route::get('/characters/create', 'CharacterController@create')->name('characters.create')->middleware('auth');
-
+Route::get('/characters/create', 'CharacterController@create')->name('characters.create');
+// ->middleware('auth')
 // Process form to create a character
 Route::put('/characters/create', 'CharacterController@store')->name('characters.store');
 
