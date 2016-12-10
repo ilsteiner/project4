@@ -13,6 +13,7 @@ jQuery(document).ready(function () {
 
 	// Initialize switches
 	jQuery("[name='bidirectional']").bootstrapSwitch();
+	jQuery("[name='remember']").bootstrapSwitch();
 
 	// Register on-click for bidirectional switch
 	jQuery("[name='bidirectional']").on('switchChange.bootstrapSwitch', function() {

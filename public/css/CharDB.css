@@ -8415,6 +8415,12 @@ body {
 #logoutButton {
   margin-left: 40%; }
 
+.bootstrap-switch {
+  font-family: FontAwesome; }
+
+#remember {
+  margin-right: 29%; }
+
 div.count-num {
   font-size: 15vw;
   font-weight: 400;

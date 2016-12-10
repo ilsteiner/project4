@@ -40,21 +40,35 @@
 
                 <div class="modal-footer">
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember"> Remember Me
-                                </label>
-                            </div>
+                        <div class="checkbox" id="remember">
+                            <label>
+                                <input
+                                    class="form-control"
+                                    type="checkbox"
+                                    name="remember"
+                                    data-size="tiny"
+                                    data-inverse="true"
+                                    data-off-text="&#xf057; Remember Me"
+                                    data-on-text="&#xf058; Remember Me"
+                                    data-on-color="success"
+                                    data-off-color="danger"
+                                    data-label-width="auto"
+                                    data-handle-width="auto"
+                                >
+                            </label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
+                        <div class="col-xs-6 col-xs-offset-3">
+                            <button type="submit" class="btn btn-primary btn-block">
                                 Login
                             </button>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-xs-5 col-xs-offset-3">
                             <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                 Forgot Your Password?
                             </a>
