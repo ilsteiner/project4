@@ -22,40 +22,55 @@ Route::get('/characters', 'CharacterController@index')->name('characters.index')
 Route::get('/characters/show/{id}', 'CharacterController@show')->name('characters.show');
 
 // Show form to create a character
-Route::get('/characters/create', 'CharacterController@create')->name('characters.create');
-// ->middleware('auth')
+Route::get('/characters/create', 'CharacterController@create')->name('characters.create')
+	->middleware('auth');
+
 // Process form to create a character
-Route::put('/characters/create', 'CharacterController@store')->name('characters.store');
+Route::put('/characters/create', 'CharacterController@store')->name('characters.store')
+	->middleware('auth');
 
 // Show form to edit a character
-Route::get('/characters/edit/{id}', 'CharacterController@edit')->name('characters.edit');
+Route::get('/characters/edit/{id}', 'CharacterController@edit')->name('characters.edit')
+	->middleware('auth');
 
 // Process form to edit a character
-Route::put('/characters/edit/{id}', 'CharacterController@update')->name('characters.update');
+Route::put('/characters/edit/{id}', 'CharacterController@update')->name('characters.update')
+	->middleware('auth');
 
 // Get route to confirm deletion of character
-Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('characters.delete');
+Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('characters.delete')
+	->middleware('auth');
 
 // Actually delete the character
-Route::delete('/characters/{id}', 'CharacterController@destroy')->name('characters.destroy');
+Route::delete('/characters/{id}', 'CharacterController@destroy')->name('characters.destroy')
+	->middleware('auth');
 
 /*Relationship routes*/
 Route::get('/relationships/show/{id}', 'RelationshipController@show')->name('relationships.show');
 
-Route::get('/relationships/create', 'RelationshipController@create')->name('relationships.create');
+Route::get('/relationships/create', 'RelationshipController@create')->name('relationships.create')
+	->middleware('auth');
 
-Route::put('/relationships/create', 'RelationshipController@store')->name('relationships.store');
+Route::put('/relationships/create', 'RelationshipController@store')->name('relationships.store')
+	->middleware('auth');
 
-Route::get('/relationships/edit/{id}', 'RelationshipController@edit')->name('relationships.edit');
+Route::get('/relationships/edit/{id}', 'RelationshipController@edit')->name('relationships.edit')
+	->middleware('auth');
 
-Route::put('/relationships/edit/{id}', 'RelationshipController@update')->name('relationships.update');
-Route::get('/relationships/delete/{id}', 'RelationshipController@delete')->name('relationships.delete');
-Route::delete('/relationships/{id}', 'RelationshipController@destroy')->name('relationships.destroy');
+Route::put('/relationships/edit/{id}', 'RelationshipController@update')->name('relationships.update')
+	->middleware('auth');
+
+Route::get('/relationships/delete/{id}', 'RelationshipController@delete')->name('relationships.delete')
+	->middleware('auth');
+Route::delete('/relationships/{id}', 'RelationshipController@destroy')->name('relationships.destroy')
+	->middleware('auth');
 
 Route::get('logout',array('uses' => 'HomeController@logout'));
 // Route::get('login',array('uses' => 'CharacterController@index'));
 
-Route::group(['middleware' => ['web']], function() {
+Auth::Routes();
+
+/*Route::group(['middleware' => ['web']], function() {
 
 // Login Routes...
     Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
@@ -73,3 +88,4 @@ Route::group(['middleware' => ['web']], function() {
 });
 
 Route::get('/home', 'HomeController@index');
+*/
