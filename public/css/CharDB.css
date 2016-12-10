@@ -8410,7 +8410,7 @@ body {
   margin-left: 10px; }
 
 #loginButton {
-  margin-left: 45%; }
+  margin-left: 40%; }
 
 #logoutButton {
   margin-left: 40%; }
@@ -8420,6 +8420,19 @@ body {
 
 #remember {
   margin-right: 29%; }
+
+#logo {
+  width: 25px;
+  height: auto;
+  margin-bottom: 5px; }
+
+.header-logo {
+  width: 35px;
+  height: auto;
+  margin-bottom: 10px; }
+
+#loginModalHeader, #registerModalHeader {
+  display: inline !important; }
 
 div.count-num {
   font-size: 15vw;

@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CharDB - @yield('page','CharDB')</title>
+	<link rel="shortcut icon" href="/favicon.ico?v2" />
 	{{-- Includes bootstrap and other master styling, mixed down from multiple .sass files --}}
 	<link rel="stylesheet" href="/css/CharDB.css">
 	@yield('head')
