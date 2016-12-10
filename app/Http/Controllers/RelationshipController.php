@@ -95,14 +95,6 @@ class RelationshipController extends Controller
 
         $relationships[0] = Relationship::find($id);
 
-        //Get the reciprocal relationship if there is one
-        $rel2 = Relationship::where('is_related_to', '=', $id)->where('character', '=', $relationships[0]->is_related_to)->get();
-
-        if(count($rel2)){
-            echo "Did it!";
-            $relationships[1] = $rel2->first();
-        }
-
         return view('relationships.edit', 
             [
                 'relationships' => $relationships,
@@ -136,6 +128,7 @@ class RelationshipController extends Controller
         $relationship->name = $request->rel_1_name;
         $relationship->character = $request->rel_1_character;
         $relationship->is_related_to = $request->rel_1_related_to;
+        $relationship->description = $request->rel_1_description;
 
         $relationship->save();
 

@@ -82,7 +82,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="form-group{{ ($errors->has('rel_1_description') ? ' has-error' : '' ) }}">
-		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description"></textarea>
+		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description">{{(isset($relationships[0]->description) ? $relationships[0]->description : "")}}</textarea>
 		</div>
 	</div>
 </div>
@@ -112,7 +112,6 @@
 
 {{-- Hide on edit because we don't handle editing bidirectionals --}}
 @if(\Route::current()->getName() == 'relationships.create')
-
 	{{-- Bidirectional switch --}}
 	<div class="row">
 		<div class="col-md-12 col-md-offset-4">
@@ -226,7 +225,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group{{ ($errors->has('rel_2_description') ? ' has-error' : '' ) }}">
-				<textarea id="rel_2_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_2_description"></textarea>
+				<textarea id="rel_2_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_2_description">{{(isset($relationships[1]->description) ? $relationships[1]->description : "")}}</textarea>
 				</div>
 			</div>
 		</div>
