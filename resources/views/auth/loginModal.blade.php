@@ -67,13 +67,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="col-xs-5 col-xs-offset-3">
                             <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                 Forgot Your Password?
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
         </div>
