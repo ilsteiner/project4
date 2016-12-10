@@ -79,9 +79,12 @@
 			<ul id='relationships'>
 				@foreach($character->relationships as $relationship)
 					<li class="relationship">
-						<a href="{{ route('relationships.edit', ['id' => $relationship->id]) }}">
-							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-						</a>
+						@if(Auth::check())
+							<a href="{{ route('relationships.edit', ['id' => $relationship->id]) }}">
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							</a>
+						@endif
+
 						{{ $character->first_name . ' ' . $relationship->name }}
 						
 						<a href="{{ route('characters.show', ['id' => $relationship->is_related_to]) }}">
@@ -90,7 +93,7 @@
 
 						{{-- Display an icon to view the description if there is one --}}
 						@if($relationship->description != null)
-							<span data-toggle="modal" data-target="#modal{{$relationship->id}}">
+							<span role="button" data-toggle="modal" data-target="#modal{{$relationship->id}}">
 								<i
 									data-toggle="tooltip"
 									class="fa fa-align-left"
@@ -136,9 +139,11 @@
 			<ul id='relationships-with'>
 				@foreach($character->relationships_with as $relationship)
 					<li class="relationship">
-						<a href="{{ route('relationships.edit', ['id' => $relationship->id]) }}">
-							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-						</a>
+						@if(Auth::check())
+							<a href="{{ route('relationships.edit', ['id' => $relationship->id]) }}">
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							</a>
+						@endif
 					
 						<a href="{{ route('characters.show', ['id' => $relationship->character]) }}">
 							{{ $relationship->character_name }}
@@ -148,7 +153,7 @@
 
 						{{-- Display an icon to view the description if there is one --}}
 						@if($relationship->description != null)
-							<span data-toggle="modal" data-target="#modal{{$relationship->id}}">
+							<span role="button" data-toggle="modal" data-target="#modal{{$relationship->id}}">
 								<i
 									data-toggle="tooltip"
 									class="fa fa-align-left"
@@ -189,24 +194,26 @@
 </div>
 @endif
 
-<div class="row">
-	<div class="col-md-5">
-		<a href="/characters/edit/{{ $character->id }}">
-			<button class="btn btn-info btn-block form-btn">
-				<i class="fa fa-pencil" aria-hidden="true"></i>
-				Edit
-			</button>
-		</a>
+@if(Auth::check())
+	<div class="row">
+		<div class="col-md-5">
+			<a href="/characters/edit/{{ $character->id }}">
+				<button class="btn btn-info btn-block form-btn">
+					<i class="fa fa-pencil" aria-hidden="true"></i>
+					Edit
+				</button>
+			</a>
+		</div>
+		<div class="col-md-3">
+			<a 
+				href="/characters/delete/{{ $character->id }}"
+				class="btn btn-danger btn-lg btn-block form-btn"
+			>
+				<i class="fa fa-trash" aria-hidden="true"></i>
+				Delete
+			</a>
+		</div>
 	</div>
-	<div class="col-md-3">
-		<a 
-			href="/characters/delete/{{ $character->id }}"
-			class="btn btn-danger btn-lg btn-block form-btn"
-		>
-			<i class="fa fa-trash" aria-hidden="true"></i>
-			Delete
-		</a>
-	</div>
-</div>
+@endif
 
 @stop

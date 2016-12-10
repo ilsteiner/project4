@@ -4,15 +4,17 @@
 	<ul class="sidebar-nav">
 		<li class="sidebar-brand">
 			<a class="brand" href="{{ route('characters.index') }}">CharDB</a>
-			<a class="brand light-tooltip-bottom" href="{{ route('characters.create') }}" 
-				data-toggle="tooltip" data-placement="bottom" title="Create character">
-				<i class="fa fa-user-plus" aria-hidden="true"></i>
-			</a>
-			<a class="brand light-tooltip-bottom" href="{{ route('relationships.create') }}"
-				data-toggle="tooltip" data-placement="bottom" title="Create relationship">
-				<i class="fa fa-sitemap" aria-hidden="true"></i>
-				<i class="fa fa-plus-circle rel-plus" aria-hidden="true"></i>
-			</a>
+			@if(Auth::check())
+				<a class="brand light-tooltip-bottom" href="{{ route('characters.create') }}" 
+					data-toggle="tooltip" data-placement="bottom" title="Create character">
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
+				</a>
+				<a class="brand light-tooltip-bottom" href="{{ route('relationships.create') }}"
+					data-toggle="tooltip" data-placement="bottom" title="Create relationship">
+					<i class="fa fa-sitemap" aria-hidden="true"></i>
+					<i class="fa fa-plus-circle rel-plus" aria-hidden="true"></i>
+				</a>
+			@endif
 			@if(!Auth::check())
 				<button class="btn btn-sm btn-primary" id="loginButton" data-toggle="modal" data-target="#loginModal">
 					Login

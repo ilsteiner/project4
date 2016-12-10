@@ -45,6 +45,9 @@ Route::get('/characters/delete/{id}', 'CharacterController@delete')->name('chara
 Route::delete('/characters/{id}', 'CharacterController@destroy')->name('characters.destroy')
 	->middleware('auth');
 
+//Show a random character
+Route::get('/characters/random', 'CharacterController@random')->name('characters.random');
+
 /*Relationship routes*/
 Route::get('/relationships/show/{id}', 'RelationshipController@show')->name('relationships.show');
 

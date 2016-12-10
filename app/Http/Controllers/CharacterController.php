@@ -194,4 +194,15 @@ class CharacterController extends Controller
 
         return redirect('/characters');
     }
+
+    /**
+     * Show a random character
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function random()
+    {
+        $id = Character::inRandomOrder()->pluck('id')->first();
+        return redirect()->route('characters.show',['id' => $id]);
+    }
 }
