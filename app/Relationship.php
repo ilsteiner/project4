@@ -9,11 +9,17 @@ use DB;
 class Relationship extends Model
 {
 	public function getRelatedToNameAttribute(){
-		return DB::table('characters')->where('id', '=', $this->is_related_to)->pluck('first_name')[0];
+		$firstName = DB::table('characters')->where('id', '=', $this->is_related_to)->pluck('first_name')[0];
+		$lastName = DB::table('characters')->where('id', '=', $this->is_related_to)->pluck('last_name')[0];
+		$lastInit = substr($lastName, 0, 1) . ".";
+		return $firstName . " " . $lastInit;
 	}
 
 	public function getCharacterNameAttribute(){
-		return DB::table('characters')->where('id', '=', $this->character)->pluck('first_name')[0];
+		$firstName = DB::table('characters')->where('id', '=', $this->character)->pluck('first_name')[0];
+		$lastName = DB::table('characters')->where('id', '=', $this->character)->pluck('last_name')[0];
+		$lastInit = substr($lastName, 0, 1) . ".";
+		return $firstName . " " . $lastInit; 
 	}
 
 	public function getToStringAttribute(){

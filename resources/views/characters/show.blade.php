@@ -85,7 +85,7 @@
 							</a>
 						@endif
 
-						{{ $character->first_name . ' ' . $relationship->name }}
+						{{ $relationship->character_name . ' ' . $relationship->name }}
 						
 						<a href="{{ route('characters.show', ['id' => $relationship->is_related_to]) }}">
 							{{ $relationship->related_to_name }}
@@ -108,7 +108,7 @@
 					{{-- A modal to display the relationship description if there is one --}}
 					@if($relationship->description != null)
 						<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
-							<div class="modal-dialog" role="document">
+							<div class="modal-dialog wide" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -149,7 +149,7 @@
 							{{ $relationship->character_name }}
 						</a>
 
-						{{ $relationship->name . ' ' . $character->first_name }}
+						{{ $relationship->name . ' ' . $relationship->related_to_name }}
 
 						{{-- Display an icon to view the description if there is one --}}
 						@if($relationship->description != null)
@@ -168,7 +168,7 @@
 					{{-- A modal to display the relationship description if there is one --}}
 					@if($relationship->description != null)
 						<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
-							<div class="modal-dialog" role="document">
+							<div class="modal-dialog wide" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
