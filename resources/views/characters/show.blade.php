@@ -27,6 +27,21 @@
 </div>
 @endif
 
+{{-- If we are coming from the random character URL, maybe you want another? --}}
+@if(isset($_GET["random"]))
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+		<a href="/characters/random">
+			<button class="btn btn-success btn-lg btn-block rand-char">
+				Another Random Character
+			</button>
+		</a>
+	</div>
+</div>
+@else
+yo
+@endif
+
 <div class="row">
 	<div class="col-xs-1 show-name">
 		{{-- Displays icon based on sex of character, looking up unicode for font-awesome --}}

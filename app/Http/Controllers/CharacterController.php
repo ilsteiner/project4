@@ -80,9 +80,17 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$random=false)
     {
-        return view('characters.show', ['character' => Character::find($id)]);
+        $returnArray = array();
+
+        $returnArray['character'] = Character::find($id);
+
+        if($random){
+            $returnArray['random'] = true;
+        }
+
+        return view('characters.show', $returnArray);
     }
 
     /**
@@ -203,6 +211,6 @@ class CharacterController extends Controller
     public function random()
     {
         $id = Character::inRandomOrder()->pluck('id')->first();
-        return redirect()->route('characters.show',['id' => $id]);
+        return redirect()->route('characters.show',['id' => $id,'random' => true]);
     }
 }
