@@ -13,4 +13,4 @@ This application serves as a database of characters. It is intended for writers,
 5. [Bootstrap Switch](http://bootstrap-switch.org)
 6. [Font Awesome](http://fontawesome.io)
 7. [Simple Sidebar](https://startbootstrap.com/template-overviews/simple-sidebar)
-8. [Gulp (for building the application)](http://gulpjs.com)
+8. [Gulp](http://gulpjs.com) (for building the application)
