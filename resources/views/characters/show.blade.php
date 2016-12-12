@@ -31,10 +31,8 @@
 @if(isset($_GET["random"]))
 <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-		<a href="/characters/random">
-			<button class="btn btn-success btn-lg btn-block rand-char">
-				Another Random Character
-			</button>
+		<a class="btn btn-success btn-lg btn-block rand-char" href="/characters/random">
+			Another Random Character
 		</a>
 	</div>
 </div>
