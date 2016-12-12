@@ -18,15 +18,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         view()->composer('layouts.navigation', function($view){
             $characters = Character::orderBy('last_name')->orderBy('first_name')->get();
-
-            // I load the sexes here because the nav always needs them
-            $sexes = DB::table('sexes')->select('id', 'icon')->get();
-            $sexMap = array();
-            foreach ($sexes as $sex) {
-                $sexMap[$sex->id] = $sex->icon;
-            }
-
-            return $view->with('characters', $characters)->with('sexes', $sexes);
+            return $view->with('characters', $characters);
         });
     }
 

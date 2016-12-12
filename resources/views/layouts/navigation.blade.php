@@ -43,7 +43,7 @@
 				>
 
 					{{-- Displays icon based on sex of character, looking up unicode for font-awesome --}}
-					<span class="fa" aria-hidden="true">{{ '&#x' . $sexes[$character->sex]->icon . ';'}}</span>
+					<span class="fa" aria-hidden="true">{{ '&#x' . $character->sex_icon . ';'}}</span>
 
 					{{-- Character name --}}
 					<span 
