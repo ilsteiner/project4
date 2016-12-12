@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <img class="header-logo" src="/chardb.png">
+                <img alt="CharDB Logo" class="header-logo" src="/chardb.png">
                 <h4 class="modal-title" id="loginModalHeader">Log in to existing account</h4>
             </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">

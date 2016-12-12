@@ -4,7 +4,7 @@
 	<ul class="sidebar-nav">
 		<li class="sidebar-brand">
 			<a class="brand" href="{{ route('characters.index') }}">
-				<img id="logo" src="/chardb.png">
+				<img alt="CharDB Logo" id="logo" src="/chardb.png">
 				CharDB
 			</a>
 			@if(Auth::check())

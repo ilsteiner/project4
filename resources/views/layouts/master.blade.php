@@ -12,7 +12,7 @@
 	<link rel="icon" type="image/png" href="/favicon-32x32.png?v=3" sizes="32x32">
 	<link rel="icon" type="image/png" href="/favicon-16x16.png?v=3" sizes="16x16">
 	<link rel="manifest" href="/manifest.json?v=3">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg?v=3" color="#5bbad5">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg?v=3">
 	<link rel="shortcut icon" href="/favicon.ico?v=3">
 	<meta name="apple-mobile-web-app-title" content="CharDB">
 	<meta name="application-name" content="CharDB">

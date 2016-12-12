@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <img class="header-logo" src="/chardb.png">
+                <img alt="CharDB Logo" class="header-logo" src="/chardb.png">
                 <h4 class="modal-title" id="registerModalHeader">Create a new account</h4>
             </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
@@ -28,7 +28,7 @@
                         <label for="reg_email" class="col-md-4 control-label">E-Mail Address</label>
 
                         <div class="col-md-6">
-                            <input id="email" type="email" class="form-control" name="reg_email" value="{{ old('reg_email') }}" required>
+                            <input id="reg_email" type="email" class="form-control" name="reg_email" value="{{ old('reg_email') }}" required>
 
                             @if ($errors->has('reg_email'))
                                 <span class="help-block">
