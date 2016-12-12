@@ -10,7 +10,7 @@ Edit Relationship
 		{{ method_field('PUT') }}
 		@include('relationships.form');
 
-		<div class="col-md-9">
+		<div class="col-md-8">
 			<button 
 				id="rel-btn" 
 				class="btn btn-primary btn-block" 
@@ -20,7 +20,7 @@ Edit Relationship
 			</button>
 		</div>
 		
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<button 
 				id="rel-btn"
 				class="btn btn-danger btn-block"

@@ -16,7 +16,7 @@ class RelationshipController extends Controller
      */
     public function create()
     {
-        return view('relationships.create', ['characters' => Character::all()]);
+        return view('relationships.create', ['characters' => Character::orderBy('last_name')->orderBy('first_name')->get()]);
     }
 
     /**
@@ -98,7 +98,7 @@ class RelationshipController extends Controller
         return view('relationships.edit', 
             [
                 'relationships' => $relationships,
-                'characters' => Character::all()
+                'characters' => Character::orderBy('last_name')->orderBy('first_name')->get()
             ]);
     }
 
