@@ -25,10 +25,8 @@ Characters
 	</div>
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<a href="/characters/random">
-				<button class="btn btn-success btn-lg btn-block rand-char">
-					Random Character
-				</button>
+			<a class="btn btn-success btn-lg btn-block rand-char" href="/characters/random">
+				Random Character
 			</a>
 		</div>
 	</div>
