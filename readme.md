@@ -2,7 +2,7 @@
 ## Live URL
 <http://p4.lsteiner.us>
 ## Description
-This application serves as a database of characters. It is intended for writers, whther that be for a book, a movie, or a game. It allows logged in users to create new characters and establish relationships between existing characters. Each new relationship can be made bidirectional, in which case the user is required to provide a description for both perspectives of the relationship.
+This application serves as a database of characters. It is intended for writers, whether that be for a book, a movie, or a game. It allows logged in users to create new characters and establish relationships between existing characters. Each new relationship can be made bidirectional, in which case the user is required to provide a description for both perspectives of the relationship.
 ## Demo
 <https://youtu.be/Zh7GxjyvQ8E>
 ## Outside code
