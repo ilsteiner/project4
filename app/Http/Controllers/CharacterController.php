@@ -53,7 +53,15 @@ class CharacterController extends Controller
             "last_name.required" => "The Last Name field is required.",
             "last_name.max" => "The Last Name field should not be longer than "
                                 . config('field_lengths.last_name')
+                                . " characters.",
+            "short_description.required" => "The Short Description field is required.",
+            "short_description.max" => "The Short Description field should not be longer than "
+                                . config('field_lengths.short_description')
+                                . " characters.",
+            "long_description.max" => "The Long Description field should not be longer than "
+                                . config('field_lengths.long_description')
                                 . " characters."
+
         ];
 
         // Get all valid sexes as a comma-separted list
@@ -130,6 +138,28 @@ class CharacterController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "first_name.required" => "The First Name field is required.",
+            "first_name.max" => "The First Name field should not be longer than "
+                                . config('field_lengths.first_name')
+                                . " characters.",
+            "middle_name.max" => "The Middle Name field should not be longer than "
+                                . config('field_lengths.middle_name')
+                                . " characters.",
+            "last_name.required" => "The Last Name field is required.",
+            "last_name.max" => "The Last Name field should not be longer than "
+                                . config('field_lengths.last_name')
+                                . " characters.",
+            "short_description.required" => "The Short Description field is required.",
+            "short_description.max" => "The Short Description field should not be longer than "
+                                . config('field_lengths.short_description')
+                                . " characters.",
+            "long_description.max" => "The Long Description field should not be longer than "
+                                . config('field_lengths.long_description')
+                                . " characters."
+
+        ];
+        
         // Get all valid sexes as a comma-separted list
         $sexes = implode(",",DB::table('sexes')->pluck('id')->toArray());
 
@@ -143,7 +173,8 @@ class CharacterController extends Controller
             'sex' => "required|in:" . $sexes,
             'short_description' => "required|max:" . config('field_lengths.short_description'),
             'long_description' => "max:" . config('field_lengths.long_description'),
-            ]
+            ],
+            $messages
             );
 
         $character = Character::find($id);

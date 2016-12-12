@@ -27,6 +27,28 @@ class RelationshipController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "rel_1_character.required" => "Both character names are required.",
+            "rel_1_character.different" => "A character cannot have a relationship with themselves!",
+            "rel_1_character.in" => "The character must already exist in the database.",
+            "rel_1_name.required" => "The type of relationship is required.",
+            "rel_1_name.max" => "The type of the relationship must not be longer than "
+                . config('field_lengths.short_description')
+                . " characters.",
+            "rel_1_related_to.required" => "Both character names are required.",
+            "rel_1_related_to.different" => "A character cannot have a relationship with themselves!",
+            "rel_1_related_to.in" => "The character must already exist in the database.",
+            "rel_1_description.max" => "The relationship description must not be longer than "
+                . config('field_lengths.long_description')
+                . " characters.",
+            "rel_2_name.max" => "The type of the relationship must not be longer than "
+                . config('field_lengths.short_description')
+                . " characters.",
+            "rel_2_description.max" => "The relationship description must not be longer than "
+                . config('field_lengths.long_description')
+                . " characters.",
+        ];
+
         //Get all valid characters as a comma-separated list
         $characters = implode(",",Character::all()->pluck('id')->toArray());
 
@@ -38,7 +60,8 @@ class RelationshipController extends Controller
                 "rel_1_description" => "max:" . config('field_lengths.long_description'),
                 "rel_2_name" => "required_with:bidirectional|max:" . config('field_lengths.short_description'),
                 "rel_2_description" => "max:" . config('field_lengths.long_description')
-            ]
+            ],
+            $messages
             );
 
         $relationship1 = new Relationship;
@@ -111,6 +134,28 @@ class RelationshipController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            "rel_1_character.required" => "Both character names are required.",
+            "rel_1_character.different" => "A character cannot have a relationship with themselves!",
+            "rel_1_character.in" => "The character must already exist in the database.",
+            "rel_1_name.required" => "The type of relationship is required.",
+            "rel_1_name.max" => "The type of the relationship must not be longer than "
+                . config('field_lengths.short_description')
+                . " characters.",
+            "rel_1_related_to.required" => "Both character names are required.",
+            "rel_1_related_to.different" => "A character cannot have a relationship with themselves!",
+            "rel_1_related_to.in" => "The character must already exist in the database.",
+            "rel_1_description.max" => "The relationship description must not be longer than "
+                . config('field_lengths.long_description')
+                . " characters.",
+            "rel_2_name.max" => "The type of the relationship must not be longer than "
+                . config('field_lengths.short_description')
+                . " characters.",
+            "rel_2_description.max" => "The relationship description must not be longer than "
+                . config('field_lengths.long_description')
+                . " characters.",
+        ];
+
         //Get all valid characters as a comma-separated list
         $characters = implode(",",Character::all()->pluck('id')->toArray());
 
@@ -120,7 +165,8 @@ class RelationshipController extends Controller
                 "rel_1_name" => "required|max:" . config('field_lengths.short_description'),
                 "rel_1_related_to" => "required|different:rel_1_character|in:" . $characters,
                 "rel_2_name" => "required_with:bidirectional|max:" . config('field_lengths.short_description')
-            ]
+            ],
+            $messages
             );
 
         $relationship = Relationship::find($id);
