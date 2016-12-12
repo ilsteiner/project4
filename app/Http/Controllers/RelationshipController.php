@@ -114,13 +114,11 @@ class RelationshipController extends Controller
      */
     public function edit($id)
     {
-        $relationships = [];
-
-        $relationships[0] = Relationship::find($id);
+        $relationship = Relationship::find($id);
 
         return view('relationships.edit', 
             [
-                'relationships' => $relationships,
+                'relationship' => $relationship,
                 'characters' => Character::orderBy('last_name')->orderBy('first_name')->get()
             ]);
     }

@@ -6,7 +6,7 @@ Edit Relationship
 
 @section('content')
 <div class="row">
-	<form name="edit-relationship" action="/relationships/edit/{{$relationships[0]->id}}" method="POST">
+	<form name="edit-relationship" action="/relationships/edit/{{$relationship->id}}" method="POST">
 		{{ method_field('PUT') }}
 		@include('relationships.form');
 
@@ -21,7 +21,7 @@ Edit Relationship
 		</div>
 		
 		<div class="col-md-3">
-			<a class="btn btn-danger btn-block white-link" href="/relationships/delete/{{$relationships[0]->id}}">
+			<a class="btn btn-danger btn-block white-link" href="/relationships/delete/{{$relationship->id}}">
 				<i class="fa fa-trash" aria-hidden="true"></i>
 				Delete Relationship
 			</a>

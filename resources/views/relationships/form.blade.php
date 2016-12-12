@@ -17,6 +17,7 @@
 			      	class="character-option" 
 			      	value="{{$character->id}}"
 			      	{{ (old('rel_1_character') == $character->id ? "selected" : "") }}
+			      	{{ (isset($relationship) && $relationship->character ==  $character->id ? "selected" : "")}}
 			      >
 			      	{{$character->full_name}}
 			      </option>
@@ -36,7 +37,7 @@
 				placeholder="Friends With" 
 				class="form-control input-lg" 
 				required
-				value="{{ old('rel_1_name') }}">
+				value="{{ old('rel_1_name', (isset($relationship) ? $relationship->name : "")) }}">
 			@if($errors->has('rel_1_name'))
 				<span class="help-block">{{ $errors->first('rel_1_name') }}</span>
 			@endif
@@ -63,6 +64,7 @@
 				      	class="character-option" 
 				      	value="{{$character->id}}"
 				      	{{ (old('rel_1_related_to') == $character->id ? "selected" : "") }}
+				      	{{ (isset($relationship) && $relationship->is_related_to ==  $character->id ? "selected" : "")}}
 				      >
 				      	{{$character->full_name}}
 				      </option>
@@ -78,7 +80,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="form-group{{ ($errors->has('rel_1_description') ? ' has-error' : '' ) }}">
-		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description">{{old('rel_1_description')}}</textarea>
+		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description">{{old('rel_1_description',(isset($relationship->description) ? $relationship->description : ""))}}</textarea>
 		</div>
 	</div>
 </div>
