@@ -26,11 +26,9 @@ Deleting {{ $relationship->to_string }}
 			</form>
 		</div>
 		<div class="col-md-6">
-			<a href="/relationships/show/{{ $relationship->id }}">
-				<button type="button" class="btn-info btn btn-lg btn-block">
-					<i class="fa fa-undo" aria-hidden="true"></i>
-					No! I didn't mean to do that!
-				</button>
+			<a class="btn-info btn btn-lg btn-block" href="/relationships/show/{{ $relationship->id }}">
+				<i class="fa fa-undo" aria-hidden="true"></i>
+				No! I didn't mean to do that!
 			</a>
 		</div>
 	</div>

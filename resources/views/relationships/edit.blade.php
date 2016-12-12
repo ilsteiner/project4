@@ -12,7 +12,7 @@ Edit Relationship
 
 		<div class="col-md-8">
 			<button 
-				id="rel-btn" 
+				id="rel-btn-save" 
 				class="btn btn-primary btn-block" 
 				type="submit">
 				<i class="fa fa-floppy-o" aria-hidden="true"></i>
@@ -21,15 +21,10 @@ Edit Relationship
 		</div>
 		
 		<div class="col-md-3">
-			<button 
-				id="rel-btn"
-				class="btn btn-danger btn-block"
-				type="button">
-				<a class="white-link" href="/relationships/delete/{{$relationships[0]->id}}">
-					<i class="fa fa-trash" aria-hidden="true"></i>
-					Delete Relationship
-				</a>
-			</button>
+			<a class="btn btn-danger btn-block white-link" href="/relationships/delete/{{$relationships[0]->id}}">
+				<i class="fa fa-trash" aria-hidden="true"></i>
+				Delete Relationship
+			</a>
 		</div>
 		
 	</form>

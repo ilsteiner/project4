@@ -8413,7 +8413,12 @@ body {
   margin-left: 40%; }
 
 #logoutButton {
-  margin-left: 40%; }
+  margin-left: 40%;
+  color: white !important; }
+
+#logoutButton:hover {
+  background-color: #954120;
+  border-color: #78341a; }
 
 .bootstrap-switch {
   font-family: FontAwesome; }

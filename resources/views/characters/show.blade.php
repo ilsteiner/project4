@@ -36,8 +36,6 @@
 		</a>
 	</div>
 </div>
-@else
-yo
 @endif
 
 <div class="row">

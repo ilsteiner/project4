@@ -3,12 +3,13 @@
 <div class="row">
 	<div class="col-md-4">
 		<div class="form-group{{ ($errors->has('rel_1_character') ? ' has-error' : '' ) }}">
-			<select required class="form-control input-lg" id="rel_1_character" name="rel_1_character" class="form-control input-lg">
+			<select required class="form-control input-lg" id="rel_1_character" name="rel_1_character">
 				<option
 					class="character-option"
 					value=""
 					disabled
-					selected
+					{{ (isset($relationships[0]->character) 
+			      			? "" : " selected") }}
 				>
 					Character 1
 				</option>
@@ -47,7 +48,7 @@
 	<div class="col-md-4">
 		<div class="form-group{{ ($errors->has('rel_1_related_to') ? ' has-error' : '' ) }}">
 			<select 
-				required class="form-control input-lg" 
+				required 
 				id="rel_1_related_to" 
 				name="rel_1_related_to" 
 				class="form-control input-lg">
@@ -56,7 +57,8 @@
 						class="character-option"
 						value=""
 						disabled
-						selected
+						{{ (isset($relationships[0]->is_related_to)
+			      			? "" : " selected") }}
 					>
 						Character 2
 					</option>
@@ -141,8 +143,7 @@
 			<div class="col-md-4">
 				<div class="form-group{{ ($errors->has('rel_2_character') ? ' has-error' : '' ) }}">
 					<select
-						disabled 
-						class="form-control input-lg" 
+						disabled  
 						id="rel_2_character" 
 						name="rel_2_character" 
 						class="form-control input-lg">
@@ -150,7 +151,8 @@
 							class="character-option"
 							value=""
 							disabled
-							selected
+							{{ (isset($relationships[1]->character) 
+			      				? "" : " selected") }}
 						>
 							Character 2
 						</option>
@@ -188,7 +190,6 @@
 			<div class="col-md-4">
 				<div class="form-group{{ ($errors->has('rel_2_related_to') ? ' has-error' : '' ) }}">
 					<select 
-						class="form-control input-lg" 
 						disabled 
 						id="rel_2_related_to" 
 						name="rel_2_related_to" 
@@ -198,7 +199,8 @@
 								class="character-option"
 								value=""
 								disabled
-								selected
+								{{ (isset($relationships[1]->is_related_to) 
+			      					? "" : " selected") }}
 							>
 								Character 1
 							</option>

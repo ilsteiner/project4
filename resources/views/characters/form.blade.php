@@ -13,7 +13,7 @@
 			</div>
 
 			<div class="col-md-5">
-				<div class="form-group{{ ($errors->has('first_name') ? ' has-error' : '' ) }}"">
+				<div class="form-group{{ ($errors->has('first_name') ? ' has-error' : '' ) }}">
 					<label class="required" for="first_name">First Name</label>
 					<input required type="text" id="first_name" name="first_name" placeholder="Arthur" class="form-control"
 					value="{{ (isset($character->first_name) ? $character->first_name : "" )}}">
@@ -24,7 +24,7 @@
 			</div>
 
 			<div class="col-md-5">
-				<div class="form-group{{ ($errors->has('middle_name') ? ' has-error' : '' ) }}"">
+				<div class="form-group{{ ($errors->has('middle_name') ? ' has-error' : '' ) }}">
 					<label for="middle_name">Middle Name</label>
 					<input type="text" id="middle_name" name="middle_name" placeholder="Philip" class="form-control"
 					value="{{ (isset($character->middle_name) ? $character->middle_name : "" )}}">
@@ -37,7 +37,7 @@
 
 		<div class="row">
 			<div class="col-md-10">
-				<div class="form-group{{ ($errors->has('last_name') ? ' has-error' : '' ) }}"">
+				<div class="form-group{{ ($errors->has('last_name') ? ' has-error' : '' ) }}">
 					<label class="required" for="last_name">Last Name</label>
 					<input required type="text" id="last_name" name="last_name" placeholder="Dent" class="form-control"
 					value="{{ (isset($character->last_name) ? $character->last_name : "" )}}">
@@ -48,7 +48,7 @@
 			</div>
 
 			<div class="col-md-2">
-				<div class="form-group{{ ($errors->has('suffix') ? ' has-error' : '' ) }}"">
+				<div class="form-group{{ ($errors->has('suffix') ? ' has-error' : '' ) }}">
 					<label for="suffix">Suffix</label>
 					<input type="text" id="suffix" name="suffix" placeholder="I" class="form-control"
 					value="{{ (isset($character->suffix) ? $character->suffix : "" )}}">
@@ -77,7 +77,11 @@
 		<div class="col-md-2">
 			<div class="form-group{{ ($errors->has('sex') ? ' has-error' : '' ) }}">
 				<label class="required" for="sex">Sex</label>
-				<select required class="form-control" id="sex" name="sex" class="form-control">
+				<select required class="form-control" id="sex" name="sex">
+				
+					{{-- Added to appease validator --}}
+					<option disabled class="sex-option" value="">--</option>
+
 				    @foreach($sexes as $sex)
 				      <option 
 				      	class="sex-option" 

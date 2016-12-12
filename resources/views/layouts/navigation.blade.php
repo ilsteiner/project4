@@ -27,10 +27,8 @@
 				</button>
 			@endif
 			@if(Auth::check())
-				<a class="brand" href="/logout" id="logoutButton">
-					<button class="btn btn-sm btn-danger">
-						Logout
-					</button>
+				<a class="brand btn btn-sm btn-danger" href="/logout" id="logoutButton">
+					Logout
 				</a>
 			@endif
 		</li>
