@@ -117,31 +117,35 @@ yo
 							</span>
 						@endif
 					</li>
+				@endforeach
+			</ul>
 
-					{{-- A modal to display the relationship description if there is one --}}
-					@if($relationship->description != null)
-						<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
-							<div class="modal-dialog wide" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="modalHeader{{$relationship->id}}">{{$relationship->to_string}}</h4>
+			{{-- We repeat the loop here in order to appease the validator
+			     It doesn't like divs inside lists --}}
+			@foreach($character->relationships as $relationship)
+				{{-- A modal to display the relationship description if there is one --}}
+				@if($relationship->description != null)
+					<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
+						<div class="modal-dialog wide" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="modalHeader{{$relationship->id}}">{{$relationship->to_string}}</h4>
+								</div>
+								<div class="modal-body">
+									<div class="well well-desc well-sm text-center">
+										{{$relationship->to_string_desc}}
 									</div>
-									<div class="modal-body">
-										<div class="well well-desc well-sm text-center">
-											{{$relationship->to_string_desc}}
-										</div>
-										{{$relationship->description}}
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									</div>
+									{{$relationship->description}}
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
-					@endif
-				@endforeach
-			</ul>
+					</div>
+				@endif
+			@endforeach
 		</div>
 
 		<div class="col-xs-4 relationships-with-self show-relationships">
@@ -177,31 +181,33 @@ yo
 							</span>
 						@endif
 					</li>
+				@endforeach
+			</ul>
 
-					{{-- A modal to display the relationship description if there is one --}}
-					@if($relationship->description != null)
-						<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
-							<div class="modal-dialog wide" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="modalHeader{{$relationship->id}}">{{$relationship->to_string}}</h4>
+			@foreach($character->relationships_with as $relationship)
+				{{-- A modal to display the relationship description if there is one --}}
+				@if($relationship->description != null)
+					<div class="modal fade" role="dialog" id="modal{{$relationship->id}}">
+						<div class="modal-dialog wide" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title" id="modalHeader{{$relationship->id}}">{{$relationship->to_string}}</h4>
+								</div>
+								<div class="modal-body">
+									<div class="well well-desc well-sm text-center">
+										{{$relationship->to_string_desc}}
 									</div>
-									<div class="modal-body">
-										<div class="well well-desc well-sm text-center">
-											{{$relationship->to_string_desc}}
-										</div>
-										{{$relationship->description}}
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									</div>
+									{{$relationship->description}}
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
-					@endif
-				@endforeach
-			</ul>
+					</div>
+				@endif
+			@endforeach
 		</div>
 	@endif
 </div>
