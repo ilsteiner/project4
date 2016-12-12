@@ -42,6 +42,20 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
+        $messages = [
+            "first_name.required" => "The First Name field is required.",
+            "first_name.max" => "The First Name field should not be longer than "
+                                . config('field_lengths.first_name')
+                                . " characters.",
+            "middle_name.max" => "The Middle Name field should not be longer than "
+                                . config('field_lengths.middle_name')
+                                . " characters.",
+            "last_name.required" => "The Last Name field is required.",
+            "last_name.max" => "The Last Name field should not be longer than "
+                                . config('field_lengths.last_name')
+                                . " characters."
+        ];
+
         // Get all valid sexes as a comma-separted list
         $sexes = implode(",",DB::table('sexes')->pluck('id')->toArray());
 
@@ -55,7 +69,8 @@ class CharacterController extends Controller
             'sex' => "required|in:" . $sexes,
             'short_description' => "required|max:" . config('field_lengths.short_description'),
             'long_description' => "max:" . config('field_lengths.long_description'),
-            ]
+            ],
+            $messages
             );
 
         $character = new Character;

@@ -8,8 +8,7 @@
 					class="character-option"
 					value=""
 					disabled
-					{{ (isset($relationships[0]->character) 
-			      			? "" : " selected") }}
+					{{ (old('rel_1_character') ? "" : " selected") }}
 				>
 					Character 1
 				</option>
@@ -17,9 +16,7 @@
 			      <option 
 			      	class="character-option" 
 			      	value="{{$character->id}}"
-			      	{{ (isset($relationships[0]->character) 
-			      			? ($relationships[0]->character == $character->id ? "selected" : "") 
-			      			: "") }}
+			      	{{ (old('rel_1_character') == $character->id ? "selected" : "") }}
 			      >
 			      	{{$character->full_name}}
 			      </option>
@@ -39,7 +36,7 @@
 				placeholder="Friends With" 
 				class="form-control input-lg" 
 				required
-				value="{{ (isset($relationships[0]->name) ? $relationships[0]->name : "" )}}">
+				value="{{ old('rel_1_name') }}">
 			@if($errors->has('rel_1_name'))
 				<span class="help-block">{{ $errors->first('rel_1_name') }}</span>
 			@endif
@@ -57,8 +54,7 @@
 						class="character-option"
 						value=""
 						disabled
-						{{ (isset($relationships[0]->is_related_to)
-			      			? "" : " selected") }}
+						{{ (old('rel_1_related_to') ? "" : " selected") }}
 					>
 						Character 2
 					</option>
@@ -66,9 +62,7 @@
 				      <option 
 				      	class="character-option" 
 				      	value="{{$character->id}}"
-				      	{{ (isset($relationships[0]->is_related_to) 
-			      			? ($relationships[0]->is_related_to == $character->id ? "selected" : "") 
-			      			: "") }}
+				      	{{ (old('rel_1_related_to') == $character->id ? "selected" : "") }}
 				      >
 				      	{{$character->full_name}}
 				      </option>
@@ -84,7 +78,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="form-group{{ ($errors->has('rel_1_description') ? ' has-error' : '' ) }}">
-		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description">{{(isset($relationships[0]->description) ? $relationships[0]->description : "")}}</textarea>
+		<textarea id="rel_1_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_1_description">{{old('rel_1_description')}}</textarea>
 		</div>
 	</div>
 </div>
@@ -93,18 +87,22 @@
 <div class="row">
 	<div class="col-md-4 rel-text character-text">
 		{{ 
-			(isset($relationships[0]->character) ? 
-				$characters->find($relationships[0]->character)->full_name : 
-				"Character 1") 
+			(old('rel_1_character') ? 
+				$characters->find(old('rel_1_character'))->full_name : 
+				"Character 1")
 		}}
 	</div>
 	<div class="col-md-4 rel-text rel-1-text">
-		{{ (isset($relationships[0]->name) ? $relationships[0]->name : "is friends with" )}}
+		{{ 
+			(old('rel_1_name') ? 
+				old('rel_1_name') : 
+				"is friends with")
+		}}
 	</div>
 	<div class="col-md-4 rel-text related-to-text">
 		{{ 
-			(isset($relationships[0]->is_related_to) ? 
-				$characters->find($relationships[0]->is_related_to)->full_name : 
+			(old('rel_1_related_to') ? 
+				$characters->find(old('rel_1_related_to'))->full_name : 
 				"Character 2")
 		}}
 	</div>
@@ -151,8 +149,7 @@
 							class="character-option"
 							value=""
 							disabled
-							{{ (isset($relationships[1]->character) 
-			      				? "" : " selected") }}
+							{{ (old('rel_2_character') ? "" : " selected") }}
 						>
 							Character 2
 						</option>
@@ -160,9 +157,7 @@
 					      <option 
 					      	class="character-option" 
 					      	value="{{$character->id}}"
-					      	{{ (isset($relationships[1]->character) 
-				      			? ($relationships[1]->character == $character->is_related_to ? "selected" : "") 
-				      			: "") }}
+					      	{{ (old('rel_2_character') == $character->id ? "selected" : "") }}
 					      >
 					      	{{$character->full_name}}
 					      </option>
@@ -181,7 +176,7 @@
 						name="rel_2_name" 
 						placeholder="Friends With" 
 						class="form-control input-lg" 
-						value="{{ (isset($relationships[1]->name) ? $relationships[1]->name : "" )}}">
+						value="{{ old('rel_2_name') }}">
 					@if($errors->has('rel_2_name'))
 						<span class="help-block">{{ $errors->first('rel_2_name') }}</span>
 					@endif
@@ -199,8 +194,7 @@
 								class="character-option"
 								value=""
 								disabled
-								{{ (isset($relationships[1]->is_related_to) 
-			      					? "" : " selected") }}
+								{{ (old('rel_2_related_to') ? "selected" : "") }}
 							>
 								Character 1
 							</option>
@@ -208,9 +202,7 @@
 						      <option 
 						      	class="character-option" 
 						      	value="{{$character->id}}"
-						      	{{ (isset($relationships[1]->is_related_to) 
-					      			? ($relationships[1]->is_related_to == $character->id ? "selected" : "") 
-					      			: "") }}
+						      	{{ (old('rel_2_related_to') == $character->id ? "selected" : "") }}
 						      >
 						      	{{$character->full_name}}
 						      </option>
@@ -227,21 +219,33 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group{{ ($errors->has('rel_2_description') ? ' has-error' : '' ) }}">
-				<textarea id="rel_2_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_2_description">{{(isset($relationships[1]->description) ? $relationships[1]->description : "")}}</textarea>
+				<textarea id="rel_2_description" class="form-control" rows="2" placeholder="A longer description of the relationship using more words." name="rel_2_description">{{old('rel_2_description')}}</textarea>
 				</div>
 			</div>
 		</div>
 
 		{{-- Text representation of second fields --}}
 		<div class="row">
-			<div class="col-md-4 rel-text related-to-text">
-				Character 2
+			<div class="col-md-4 rel-text character-text">
+				{{ 
+					(old('rel_2_character') ? 
+						$characters->find(old('rel_2_character'))->full_name : 
+						"Character 1")
+				}}
 			</div>
 			<div class="col-md-4 rel-text rel-2-text">
-				is friends with
+				{{ 
+					(old('rel_2_name') ? 
+						old('rel_2_name') : 
+						"is friends with")
+				}}
 			</div>
-			<div class="col-md-4 rel-text character-text">
-				Character 1
+			<div class="col-md-4 rel-text related-to-text">
+				{{ 
+					(old('rel_2_related_to') ? 
+						$characters->find(old('rel_2_related_to'))->full_name : 
+						"Character 2")
+				}}
 			</div>
 		</div>
 	</div>
